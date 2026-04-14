@@ -1,1142 +1,2159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sala do Empreendedor — Rio do Campo</title>
-  <meta name="description" content="A Sala do Empreendedor de Rio do Campo oferece serviços e orientações para empreendedores, em parceria com o SEBRAE." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg:        #0b0c10;
-      --surface:   #111318;
-      --surface2:  #181b23;
-      --border:    rgba(255,255,255,0.07);
-      --text:      #e8eaf0;
-      --muted:     #7a7f94;
-      --accent:    #f5a623;
-      --accent2:   #4f8ef7;
-      --accent3:   #3dd6a3;
-      --radius:    16px;
-      --radius-sm: 10px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sala do Empreendedor — Rio do Campo</title>
+    <meta name="description" content="A Sala do Empreendedor de Rio do Campo oferece serviços e orientações para empreendedores, em parceria com o SEBRAE." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --surface: #111318;
+        --surface2: #181b23;
+        --border: rgba(255, 255, 255, 0.07);
+        --text: #e8eaf0;
+        --muted: #7a7f94;
+        --accent: #f5a623;
+        --accent2: #4f8ef7;
+        --accent3: #3dd6a3;
+        --radius: 16px;
+        --radius-sm: 10px;
+      }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "DM Sans", sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
 
-    h1, h2, h3, h4, h5 {
-      font-family: 'Syne', sans-serif;
-      letter-spacing: -0.02em;
-    }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: "Syne", sans-serif;
+        letter-spacing: -0.02em;
+      }
 
-    a { color: inherit; text-decoration: none; }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-    /* ── TOP BAR ─────────────────────────────── */
-    .topbar {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: center;
-      padding: 8px 20px;
-    }
-    .topbar-inner {
-      max-width: 1200px;
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      gap: 28px;
-      align-items: center;
-    }
-    
-    .topbar a {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      color: var(--muted);
-      font-size: 13px;
-      transition: color .2s;
-    }
-    .topbar a:hover { color: var(--text); }
-    .topbar svg { flex-shrink: 0; }
+      /* ── TOP BAR ─────────────────────────────── */
+      .topbar {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: center;
+        padding: 8px 20px;
+      }
+      .topbar-inner {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        gap: 28px;
+        align-items: center;
+      }
 
-    /* ── NAV ─────────────────────────────────── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(11,12,16,0.85);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 17px;
-    }
-    .nav-logo-icon {
-      width: 38px;
-      height: 38px;
-      background: linear-gradient(135deg, var(--accent), #e07b00);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .nav-logo span.sub { color: var(--muted); font-weight: 400; font-size: 13px; display: block; margin-top: -2px; font-family: 'DM Sans', sans-serif; letter-spacing: 0; }
-    .nav-links { display: flex; gap: 4px; align-items: center; }
-    .nav-links a {
-      padding: 7px 14px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--muted);
-      transition: all .2s;
-    }
-    .nav-links a:hover { color: var(--text); background: var(--surface2); }
-    .nav-links a.cta {
-      background: var(--accent);
-      color: #000;
-      font-weight: 600;
-      margin-left: 8px;
-    }
-    .nav-links a.cta:hover { background: #e09510; }
-    .nav-insta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 13px;
-      transition: color .2s;
-    }
-    .nav-insta:hover { color: var(--text); }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: all .3s;
-    }
-    @media (max-width: 680px) {
-      .topbar-inner { display: flex; flex-direction: column; justify-content: center; margin: 8px 0; gap: 6px; }
-      .nav-links, .nav-insta { display: none; }
-      .hamburger { display: flex; }
-    }
+      .topbar a {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--muted);
+        font-size: 13px;
+        transition: color 0.2s;
+      }
+      .topbar a:hover {
+        color: var(--text);
+      }
+      .topbar svg {
+        flex-shrink: 0;
+      }
 
-    /* ── MOBILE MENU ─────────────────────────── */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      background: rgba(0,0,0,.7);
-      backdrop-filter: blur(4px);
-    }
-    .mobile-menu.open { display: block; }
-    .mobile-menu-panel {
-      position: absolute;
-      top: 0; left: 0;
-      width: 280px;
-      height: 100%;
-      background: var(--surface);
-      padding: 24px;
-      border-right: 1px solid var(--border);
-      overflow-y: auto;
-    }
-    .mobile-menu-panel .close-btn {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 24px;
-      cursor: pointer;
-      color: var(--muted);
-    }
-    .mobile-menu-panel a {
-      display: block;
-      padding: 12px 0;
-      font-size: 16px;
-      font-weight: 500;
-      border-bottom: 1px solid var(--border);
-      color: var(--text);
-      transition: color .2s;
-    }
-    .mobile-menu-panel a:hover { color: var(--accent); }
+      /* ── NAV ─────────────────────────────────── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(11, 12, 16, 0.85);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 17px;
+      }
+      .nav-logo-icon {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, var(--accent), #e07b00);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .nav-logo span.sub {
+        color: var(--muted);
+        font-weight: 400;
+        font-size: 13px;
+        display: block;
+        margin-top: -2px;
+        font-family: "DM Sans", sans-serif;
+        letter-spacing: 0;
+      }
+      .nav-links {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+      }
+      .nav-links a {
+        padding: 7px 14px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--muted);
+        transition: all 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--text);
+        background: var(--surface2);
+      }
+      .nav-links a.cta {
+        background: var(--accent);
+        color: #000;
+        font-weight: 600;
+        margin-left: 8px;
+      }
+      .nav-links a.cta:hover {
+        background: #e09510;
+      }
+      .nav-insta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        transition: color 0.2s;
+      }
+      .nav-insta:hover {
+        color: var(--text);
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+      @media (max-width: 680px) {
+        .topbar-inner {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin: 8px 0;
+          gap: 6px;
+        }
+        .nav-links,
+        .nav-insta {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+      }
 
-    /* ── HERO ────────────────────────────────── */
-    .hero {
-      position: relative;
-      min-height: 480px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding: 60px 24px;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,166,35,.12) 0%, transparent 70%),
-                  radial-gradient(ellipse 60% 50% at 80% 100%, rgba(79,142,247,.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-      text-align: center;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(245,166,35,.1);
-      border: 1px solid rgba(245,166,35,.25);
-      border-radius: 100px;
-      padding: 6px 14px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--accent);
-      margin-bottom: 24px;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-    .hero-badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-    }
-    .hero h1 {
-      font-size: clamp(36px, 6vw, 64px);
-      font-weight: 800;
-      line-height: 1.05;
-      margin-bottom: 20px;
-      color: var(--text);
-    }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--accent);
-    }
-    .hero p {
-      font-size: 17px;
-      color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto 36px;
-      line-height: 1.7;
-    }
-    .hero-ctas {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #000;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      padding: 13px 24px;
-      border-radius: 10px;
-      transition: all .2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-primary:hover { background: #e09510; transform: translateY(-1px); }
-    .btn-ghost {
-      background: var(--surface2);
-      color: var(--text);
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 13px 24px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      transition: all .2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-ghost:hover { background: var(--surface); border-color: rgba(255,255,255,.15); transform: translateY(-1px); }
+      /* ── MOBILE MENU ─────────────────────────── */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+      }
+      .mobile-menu.open {
+        display: block;
+      }
+      .mobile-menu-panel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100%;
+        background: var(--surface);
+        padding: 24px;
+        border-right: 1px solid var(--border);
+        overflow-y: auto;
+      }
+      .mobile-menu-panel .close-btn {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 24px;
+        cursor: pointer;
+        color: var(--muted);
+      }
+      .mobile-menu-panel a {
+        display: block;
+        padding: 12px 0;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 1px solid var(--border);
+        color: var(--text);
+        transition: color 0.2s;
+      }
+      .mobile-menu-panel a:hover {
+        color: var(--accent);
+      }
 
-    /* ── STATS STRIP ─────────────────────────── */
-    .stats-strip {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-      padding: 28px 24px;
-      display: flex;
-      justify-content: center;
-    }
-    .stats-inner {
-      max-width: 1200px;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .stat {
-      text-align: center;
-    }
-    .stat-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--accent);
-      display: block;
-    }
-    .stat-label {
-      font-size: 12px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
+      /* ── HERO ────────────────────────────────── */
+      .hero {
+        position: relative;
+        min-height: 480px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 60px 24px;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245, 166, 35, 0.12) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 80% 100%, rgba(79, 142, 247, 0.08) 0%, transparent 60%);
+        pointer-events: none;
+      }
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        background-size: 60px 60px;
+        pointer-events: none;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 720px;
+        text-align: center;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(245, 166, 35, 0.1);
+        border: 1px solid rgba(245, 166, 35, 0.25);
+        border-radius: 100px;
+        padding: 6px 14px;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--accent);
+        margin-bottom: 24px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .hero-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: var(--accent);
+        border-radius: 50%;
+      }
+      .hero h1 {
+        font-size: clamp(36px, 6vw, 64px);
+        font-weight: 800;
+        line-height: 1.05;
+        margin-bottom: 20px;
+        color: var(--text);
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .hero p {
+        font-size: 17px;
+        color: var(--muted);
+        max-width: 520px;
+        margin: 0 auto 36px;
+        line-height: 1.7;
+      }
+      .hero-ctas {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #000;
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 13px 24px;
+        border-radius: 10px;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn-primary:hover {
+        background: #e09510;
+        transform: translateY(-1px);
+      }
+      .btn-ghost {
+        background: var(--surface2);
+        color: var(--text);
+        font-family: "Syne", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 13px 24px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn-ghost:hover {
+        background: var(--surface);
+        border-color: rgba(255, 255, 255, 0.15);
+        transform: translateY(-1px);
+      }
 
-    /* ── SECTION ─────────────────────────────── */
-    section.content-section {
-      padding: 80px 24px;
-      display: flex;
-      justify-content: center;
-    }
-    .section-inner { max-width: 1200px; width: 100%; }
-    .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-    .section-title {
-      font-size: clamp(26px, 4vw, 40px);
-      font-weight: 800;
-      margin-bottom: 12px;
-      line-height: 1.1;
-    }
-    .section-sub {
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 480px;
-      margin-bottom: 48px;
-    }
+      /* ── STATS STRIP ─────────────────────────── */
+      .stats-strip {
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        background: var(--surface);
+        padding: 28px 24px;
+        display: flex;
+        justify-content: center;
+      }
+      .stats-inner {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .stat {
+        text-align: center;
+      }
+      .stat-num {
+        font-family: "Syne", sans-serif;
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--accent);
+        display: block;
+      }
+      .stat-label {
+        font-size: 12px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
 
-    /* ── MATERIAIS ───────────────────────────── */
-    #aprendizado { background: var(--bg); }
-    .materiais-layout {
-      display: flex;
-      gap: 28px;
-      align-items: flex-start;
-    }
+      /* ── SECTION ─────────────────────────────── */
+      section.content-section {
+        padding: 80px 24px;
+        display: flex;
+        justify-content: center;
+      }
+      .section-inner {
+        max-width: 1200px;
+        width: 100%;
+      }
+      .section-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .section-title {
+        font-size: clamp(26px, 4vw, 40px);
+        font-weight: 800;
+        margin-bottom: 12px;
+        line-height: 1.1;
+      }
+      .section-sub {
+        color: var(--muted);
+        font-size: 15px;
+        max-width: 480px;
+        margin-bottom: 48px;
+      }
 
-    /* Sidebar */
-    .cat-sidebar {
-      width: 220px;
-      flex-shrink: 0;
-      position: sticky;
-      top: 80px;
-    }
-    .cat-sidebar-title {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
-      padding: 0 12px;
-    }
-    .cat-sidebar ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .cat-sidebar ul li {
-      border-radius: 8px;
-      cursor: pointer;
-      padding: 9px 12px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--muted);
-      transition: all .18s;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .cat-sidebar ul li:hover { background: var(--surface2); color: var(--text); }
-    .cat-sidebar ul li.active { background: var(--surface2); color: var(--text); font-weight: 600; }
-    .cat-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
+      /* ── MATERIAIS ───────────────────────────── */
+      #aprendizado {
+        background: var(--bg);
+      }
+      .materiais-layout {
+        display: flex;
+        gap: 28px;
+        align-items: flex-start;
+      }
 
-    /* Cards area */
-    .cards-area { flex: 1; min-width: 0; }
-    .cat-panel { display: none; }
-    .cat-panel.active { display: block; }
-    .cat-panel-title {
-      font-size: 28px;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-    .cat-panel-desc {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-    }
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform .2s, box-shadow .2s, border-color .2s;
-      cursor: pointer;
-      position: relative;
-    }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(0,0,0,.4);
-      border-color: rgba(255,255,255,.12);
-    }
-    .card a {
-      display: block;
-      height: 100%;
-    }
-    .card-top {
-      height: 6px;
-    }
-    .card-body {
-      padding: 18px 16px 20px;
-    }
-    .card-icon {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 12px;
-      font-size: 16px;
-    }
-    .card-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.3;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-    .card-desc {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-    .card-arrow {
-      position: absolute;
-      bottom: 14px;
-      right: 14px;
-      color: var(--muted);
-      opacity: 0;
-      transition: opacity .2s, transform .2s;
-      font-size: 14px;
-    }
-    .card:hover .card-arrow { opacity: 1; transform: translate(2px, -2px); }
+      /* Sidebar */
+      .cat-sidebar {
+        width: 220px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 80px;
+      }
+      .cat-sidebar-title {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 12px;
+        padding: 0 12px;
+      }
+      .cat-sidebar ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .cat-sidebar ul li {
+        border-radius: 8px;
+        cursor: pointer;
+        padding: 9px 12px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--muted);
+        transition: all 0.18s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .cat-sidebar ul li:hover {
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .cat-sidebar ul li.active {
+        background: var(--surface2);
+        color: var(--text);
+        font-weight: 600;
+      }
+      .cat-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
 
-    @media (max-width: 900px) {
-      .materiais-layout { flex-direction: column; }
-      .cat-sidebar { width: 100%; position: static; }
-      .cat-sidebar ul { flex-direction: row; flex-wrap: wrap; }
-      .cat-sidebar ul li { padding: 6px 10px; font-size: 12px; }
-    }
+      /* Cards area */
+      .cards-area {
+        flex: 1;
+        min-width: 0;
+      }
+      .cat-panel {
+        display: none;
+      }
+      .cat-panel.active {
+        display: block;
+      }
+      .cat-panel-title {
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 6px;
+      }
+      .cat-panel-desc {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 28px;
+      }
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s,
+          border-color 0.2s;
+        cursor: pointer;
+        position: relative;
+      }
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+      .card a {
+        display: block;
+        height: 100%;
+      }
+      .card-top {
+        height: 6px;
+      }
+      .card-body {
+        padding: 18px 16px 20px;
+      }
+      .card-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+      .card-name {
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.3;
+        color: var(--text);
+        margin-bottom: 6px;
+      }
+      .card-desc {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .card-arrow {
+        position: absolute;
+        bottom: 14px;
+        right: 14px;
+        color: var(--muted);
+        opacity: 0;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        font-size: 14px;
+      }
+      .card:hover .card-arrow {
+        opacity: 1;
+        transform: translate(2px, -2px);
+      }
 
-    /* ── CAPACITAÇÕES ────────────────────────── */
-    #capacitacoes { background: var(--surface); border-top: 1px solid var(--border); }
-    .cursos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .curso-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform .2s, box-shadow .2s;
-      cursor: pointer;
-    }
-    .curso-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0,0,0,.5);
-      border-color: rgba(255,255,255,.1);
-    }
-    .curso-card a { display: block; }
-    .curso-logo {
-      height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: white;
-      padding: 20px;
-    }
-    .curso-logo img, .curso-logo svg {
-      max-height: 60px;
-      max-width: 100%;
-      object-fit: contain;
-    }
-    .curso-body {
-      padding: 18px 18px 20px;
-    }
-    .curso-body h3 {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--text);
-    }
-    .curso-body p {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-    .curso-tag {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      color: var(--accent3);
-      background: rgba(61,214,163,.08);
-      border: 1px solid rgba(61,214,163,.15);
-      padding: 3px 8px;
-      border-radius: 100px;
-    }
+      @media (max-width: 900px) {
+        .materiais-layout {
+          flex-direction: column;
+        }
+        .cat-sidebar {
+          width: 100%;
+          position: static;
+        }
+        .cat-sidebar ul {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        .cat-sidebar ul li {
+          padding: 6px 10px;
+          font-size: 12px;
+        }
+      }
 
-    /* ── CONTATO ─────────────────────────────── */
-    #contato { background: var(--bg); }
-    .contato-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-    @media (max-width: 760px) {
-      .contato-grid { grid-template-columns: 1fr; }
-    }
-    .contato-info { display: flex; flex-direction: column; gap: 16px; }
-    .contato-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 18px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      transition: border-color .2s;
-    }
-    .contato-item:hover { border-color: rgba(255,255,255,.12); }
-    .contato-item a { color: var(--text); transition: color .2s; }
-    .contato-item a:hover { color: var(--accent); }
-    .contato-icon {
-      width: 38px; height: 38px;
-      background: var(--surface2);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--accent);
-    }
-    .contato-detail { font-size: 13px; }
-    .contato-detail .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; font-weight: 600; }
-    .map-embed {
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      height: 320px;
-    }
-    .map-embed iframe { width: 100%; height: 100%; border: none; display: block; }
+      /* ── CAPACITAÇÕES ────────────────────────── */
+      #capacitacoes {
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+      }
+      .cursos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 16px;
+      }
+      .curso-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        cursor: pointer;
+      }
+      .curso-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+      .curso-card a {
+        display: block;
+      }
+      .curso-logo {
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        padding: 20px;
+      }
+      .curso-logo img,
+      .curso-logo svg {
+        max-height: 60px;
+        max-width: 100%;
+        object-fit: contain;
+      }
+      .curso-body {
+        padding: 18px 18px 20px;
+      }
+      .curso-body h3 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: var(--text);
+      }
+      .curso-body p {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .curso-tag {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--accent3);
+        background: rgba(61, 214, 163, 0.08);
+        border: 1px solid rgba(61, 214, 163, 0.15);
+        padding: 3px 8px;
+        border-radius: 100px;
+      }
 
-    /* ── FOOTER ──────────────────────────────── */
-    footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 36px 24px;
-      display: flex;
-      justify-content: center;
-    }
-    .footer-inner {
-      max-width: 1200px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-    }
-    .footer-logo .icon {
-      width: 32px; height: 32px;
-      background: linear-gradient(135deg, var(--accent), #e07b00);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .footer-meta {
-      font-size: 12px;
-      color: var(--muted);
-      text-align: right;
-    }
-    .footer-links {
-      display: flex;
-      gap: 20px;
-    }
-    .footer-links a {
-      font-size: 13px;
-      color: var(--muted);
-      transition: color .2s;
-    }
-    .footer-links a:hover { color: var(--text); }
+      /* ── CONTATO ─────────────────────────────── */
+      #contato {
+        background: var(--bg);
+      }
+      .contato-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: start;
+      }
+      @media (max-width: 760px) {
+        .contato-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .contato-info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .contato-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 18px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        transition: border-color 0.2s;
+      }
+      .contato-item:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+      .contato-item a {
+        color: var(--text);
+        transition: color 0.2s;
+      }
+      .contato-item a:hover {
+        color: var(--accent);
+      }
+      .contato-icon {
+        width: 38px;
+        height: 38px;
+        background: var(--surface2);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: var(--accent);
+      }
+      .contato-detail {
+        font-size: 13px;
+      }
+      .contato-detail .label {
+        font-size: 11px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 3px;
+        font-weight: 600;
+      }
+      .map-embed {
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        height: 320px;
+      }
+      .map-embed iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
 
-    /* ── SCROLLBAR ───────────────────────────── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #2a2e3d; }
+      /* ── FOOTER ──────────────────────────────── */
+      footer {
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        padding: 36px 24px;
+        display: flex;
+        justify-content: center;
+      }
+      .footer-inner {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+      }
+      .footer-logo .icon {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, var(--accent), #e07b00);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .footer-meta {
+        font-size: 12px;
+        color: var(--muted);
+        text-align: right;
+      }
+      .footer-links {
+        display: flex;
+        gap: 20px;
+      }
+      .footer-links a {
+        font-size: 13px;
+        color: var(--muted);
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: var(--text);
+      }
 
-    /* ── ANIMATIONS ──────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-content > * {
-      animation: fadeUp .6s ease both;
-    }
-    .hero-content > *:nth-child(1) { animation-delay: .05s; }
-    .hero-content > *:nth-child(2) { animation-delay: .15s; }
-    .hero-content > *:nth-child(3) { animation-delay: .25s; }
-    .hero-content > *:nth-child(4) { animation-delay: .35s; }
+      /* ── SCROLLBAR ───────────────────────────── */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--surface2);
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #2a2e3d;
+      }
 
-  </style>
-</head>
-<body>
-
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <a href="https://api.whatsapp.com/send?phone=554735648122" target="_blank">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M13.6 2.33A7.85 7.85 0 0 0 8 0C3.6 0 .07 3.56.06 7.93c0 1.4.37 2.76 1.06 3.96L0 16l4.2-1.1a7.9 7.9 0 0 0 3.79.96h.004c4.37 0 7.93-3.56 7.93-7.93a7.9 7.9 0 0 0-2.33-5.59zM8 14.52a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.67-2.43-.16-.25A6.56 6.56 0 0 1 1.41 7.9c0-3.63 2.96-6.58 6.59-6.58a6.56 6.56 0 0 1 6.59 6.58c0 3.64-2.96 6.6-6.59 6.6zm3.61-4.93c-.2-.1-1.17-.58-1.35-.65-.18-.06-.32-.1-.44.1-.13.2-.51.65-.63.78-.11.13-.23.15-.43.05-.2-.1-.84-.31-1.59-.99-.59-.52-.98-1.17-1.1-1.37-.12-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.33.06-.13.03-.25-.02-.35-.05-.1-.44-1.08-.6-1.47-.16-.39-.33-.34-.45-.34h-.38a.73.73 0 0 0-.53.25c-.18.2-.69.68-.69 1.65 0 .98.71 1.92.81 2.05.1.13 1.39 2.13 3.38 2.99.47.2.84.33 1.13.42.47.15.9.13 1.24.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.08-.18-.13-.38-.23z"/></svg>
-      (47) 3564-8122
-    </a>
-    <a href="mailto:rdc.empreendedor@gmail.com" target="_blank">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.71 2.825L15 11.1V5.383zm-.03 6.876-5.64-3.47L8 9.58l-1.33-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .97-.741zM1 11.1l4.71-2.897L1 5.383V11.1z"/></svg>
-      rdc.empreendedor@gmail.com
-    </a>
-    <a href="https://www.instagram.com/saladoempreendedorrdc/" target="_blank">
-      <svg width="14" height="14" viewBox="0 0 30 27" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.03 0C10.61.01 11.12 0 15.15 0c4.03 0 4.54.01 6.12.08 1.58.07 2.66.3 3.6.63.99.34 1.89.87 2.63 1.56.76.67 1.34 1.49 1.72 2.39.37.86.62 1.84.69 3.28.07 1.44.08 1.9.08 5.57 0 3.67-.02 4.12-.08 5.56-.07 1.43-.33 2.42-.69 3.27-.37.9-.96 1.72-1.72 2.39-.74.69-1.64 1.22-2.63 1.56-.95.33-2.04.56-3.6.62-1.58.07-2.07.08-6.12.08-4.04 0-4.54-.01-6.12-.08-1.58-.07-2.66-.3-3.61-.62a7.04 7.04 0 0 1-2.63-1.56A7.12 7.12 0 0 1 1.08 22.3C.71 21.48.46 20.5.39 19.06.32 17.62.3 17.17.3 13.5c0-3.67.02-4.12.09-5.56.07-1.44.32-2.42.69-3.28.37-.9.96-1.71 1.72-2.39A7.02 7.02 0 0 1 5.42.71C6.37.38 7.45.15 9.03.08V0zm12.12 2.51C19.58 2.45 19.12 2.43 15.15 2.43c-3.97 0-4.43.01-5.99.07-1.45.06-2.24.28-2.76.46-.69.25-1.19.54-1.71 1.02a4.55 4.55 0 0 0-1.09 1.54c-.21.48-.45 1.19-.52 2.51-.07 1.42-.08 1.85-.08 5.47 0 3.61.01 4.04.08 5.46.07 1.32.31 2.02.52 2.51.24.58.62 1.11 1.09 1.54.48.45 1.02.79 1.71 1.01.52.18 1.31.4 2.76.46 1.56.06 2.02.08 5.99.08 3.96 0 4.42-.02 5.98-.08 1.45-.07 2.23-.28 2.76-.46.69-.25 1.19-.56 1.71-1.01.49-.44.87-.97 1.1-1.54.2-.48.45-1.19.52-2.51.07-1.42.08-1.85.08-5.46 0-3.62-.01-4.05-.08-5.47-.07-1.32-.31-2.02-.52-2.51a4.57 4.57 0 0 0-1.1-1.54 4.07 4.07 0 0 0-1.71-1.02c-.53-.18-1.31-.4-2.76-.46zM13.25 17.66a4.9 4.9 0 0 0 6.75-6.56 4.9 4.9 0 0 0-8.58 4.63 4.88 4.88 0 0 0 1.83 1.93zm-2.53-9.07A7.08 7.08 0 0 1 22.78 13.5a7.08 7.08 0 0 1-15.27 0 7.08 7.08 0 0 1 5.21-6.9zm11.72-.47a1.66 1.66 0 1 1-2.17-2.49 1.66 1.66 0 0 1 2.17 2.49z"/></svg>
-      Instagram
-    </a>
-  </div>
-</div>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <div class="nav-logo">
-      <div class="nav-logo-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-      </div>
-      <div>
-        Sala do Empreendedor
-        <span class="sub">Rio do Campo — SC</span>
-      </div>
-    </div>
-
-    <div class="nav-links">
-      <a href="#aprendizado">Materiais</a>
-      <a href="#capacitacoes">Capacitações</a>
-      <a href="https://riodocampo.atende.net/cidadao/noticia/conheca-a-sala-do-empreendedor" target="_blank">Sobre</a>
-      <a href="#contato" class="cta">Fale conosco</a>
-    </div>
-
-    <a class="nav-insta" href="https://www.instagram.com/saladoempreendedorrdc/" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 30 27" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.03 0C10.61.01 11.12 0 15.15 0c4.03 0 4.54.01 6.12.08 1.58.07 2.66.3 3.6.63.99.34 1.89.87 2.63 1.56.76.67 1.34 1.49 1.72 2.39.37.86.62 1.84.69 3.28.07 1.44.08 1.9.08 5.57 0 3.67-.02 4.12-.08 5.56-.07 1.43-.33 2.42-.69 3.27-.37.9-.96 1.72-1.72 2.39-.74.69-1.64 1.22-2.63 1.56-.95.33-2.04.56-3.6.62-1.58.07-2.07.08-6.12.08-4.04 0-4.54-.01-6.12-.08-1.58-.07-2.66-.3-3.61-.62a7.04 7.04 0 0 1-2.63-1.56A7.12 7.12 0 0 1 1.08 22.3C.71 21.48.46 20.5.39 19.06.32 17.62.3 17.17.3 13.5c0-3.67.02-4.12.09-5.56.07-1.44.32-2.42.69-3.28.37-.9.96-1.71 1.72-2.39A7.02 7.02 0 0 1 5.42.71C6.37.38 7.45.15 9.03.08V0zm12.12 2.51C19.58 2.45 19.12 2.43 15.15 2.43c-3.97 0-4.43.01-5.99.07-1.45.06-2.24.28-2.76.46-.69.25-1.19.54-1.71 1.02a4.55 4.55 0 0 0-1.09 1.54c-.21.48-.45 1.19-.52 2.51-.07 1.42-.08 1.85-.08 5.47 0 3.61.01 4.04.08 5.46.07 1.32.31 2.02.52 2.51.24.58.62 1.11 1.09 1.54.48.45 1.02.79 1.71 1.01.52.18 1.31.4 2.76.46 1.56.06 2.02.08 5.99.08 3.96 0 4.42-.02 5.98-.08 1.45-.07 2.23-.28 2.76-.46.69-.25 1.19-.56 1.71-1.01.49-.44.87-.97 1.1-1.54.2-.48.45-1.19.52-2.51.07-1.42.08-1.85.08-5.46 0-3.62-.01-4.05-.08-5.47-.07-1.32-.31-2.02-.52-2.51a4.57 4.57 0 0 0-1.1-1.54 4.07 4.07 0 0 0-1.71-1.02c-.53-.18-1.31-.4-2.76-.46zM13.25 17.66a4.9 4.9 0 0 0 6.75-6.56 4.9 4.9 0 0 0-8.58 4.63 4.88 4.88 0 0 0 1.83 1.93zm-2.53-9.07A7.08 7.08 0 0 1 22.78 13.5a7.08 7.08 0 0 1-15.27 0 7.08 7.08 0 0 1 5.21-6.9zm11.72-.47a1.66 1.66 0 1 1-2.17-2.49 1.66 1.66 0 0 1 2.17 2.49z"/></svg>
-      @saladoempreendedorrdc
-    </a>
-
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu" onclick="closeMobileOnBg(event)">
-  <div class="mobile-menu-panel">
-    <div class="close-btn" onclick="toggleMenu()">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </div>
-    <a href="#aprendizado" onclick="toggleMenu()">Materiais</a>
-    <a href="#capacitacoes" onclick="toggleMenu()">Capacitações</a>
-    <a href="https://riodocampo.atende.net/cidadao/noticia/conheca-a-sala-do-empreendedor" target="_blank">Sobre nós</a>
-    <a href="#contato" onclick="toggleMenu()">Fale conosco</a>
-    <a href="https://api.whatsapp.com/send?phone=554735648122" target="_blank">WhatsApp</a>
-    <a href="https://www.instagram.com/saladoempreendedorrdc/" target="_blank">Instagram</a>
-  </div>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge">Em parceria com o SEBRAE</div>
-    <h1>Apoio completo para o seu <em>negócio</em> crescer</h1>
-    <p>Abra sua empresa, emita documentos, acesse capacitações e resolva tudo o que você precisa para empreender em Rio do Campo.</p>
-    <div class="hero-ctas">
-      <a href="#aprendizado" class="btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Ver materiais
-      </a>
-      <a href="https://api.whatsapp.com/send?phone=554735648122" target="_blank" class="btn-ghost">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.6 2.33A7.85 7.85 0 0 0 8 0C3.6 0 .07 3.56.06 7.93c0 1.4.37 2.76 1.06 3.96L0 16l4.2-1.1a7.9 7.9 0 0 0 3.79.96h.004c4.37 0 7.93-3.56 7.93-7.93a7.9 7.9 0 0 0-2.33-5.59z"/></svg>
-        Falar no WhatsApp
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- STATS STRIP -->
-<div class="stats-strip">
-  <div class="stats-inner">
-    <div class="stat">
-      <span class="stat-num">15+</span>
-      <span class="stat-label">Categorias de serviço</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">60+</span>
-      <span class="stat-label">Links e materiais</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">12</span>
-      <span class="stat-label">Plataformas de capacitação</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">Grátis</span>
-      <span class="stat-label">Atendimento presencial</span>
-    </div>
-  </div>
-</div>
-
-<!-- MATERIAIS -->
-<section class="content-section" id="aprendizado">
-  <div class="section-inner">
-    <div class="section-label">Nossos materiais</div>
-    <h2 class="section-title">Tudo que você precisa, <br>num só lugar</h2>
-    <p class="section-sub">Clique em uma categoria para ver os serviços disponíveis.</p>
-
-    <div class="materiais-layout">
-      <!-- SIDEBAR -->
-      <div class="cat-sidebar">
-        <div class="cat-sidebar-title">Categorias</div>
-        <ul id="catList">
-          <li class="active" data-cat="MEI" onclick="switchCat(this)"><span class="cat-dot" style="background:#f5a623"></span>MEI</li>
-          <li data-cat="CartilhaDoMEI" onclick="switchCat(this)"><span class="cat-dot" style="background:#00b70f"></span>Cartilha do MEI</li>
-          <li data-cat="NotaFiscal" onclick="switchCat(this)"><span class="cat-dot" style="background:#4f8ef7"></span>Nota Fiscal</li>
-          <li data-cat="Autonomo" onclick="switchCat(this)"><span class="cat-dot" style="background:#ffd32e"></span>Autônomo</li>
-          <li data-cat="Contabilidade" onclick="switchCat(this)"><span class="cat-dot" style="background:#bdcf00"></span>Contabilidade</li>
-          <li data-cat="Certidoes" onclick="switchCat(this)"><span class="cat-dot" style="background:#00bbbb"></span>Certidões Negativas</li>
-          <li data-cat="Secretaria" onclick="switchCat(this)"><span class="cat-dot" style="background:#ff4f4f"></span>Secretaria do Estado</li>
-          <li data-cat="Vigilancia" onclick="switchCat(this)"><span class="cat-dot" style="background:#5b9bd5"></span>Vigilância Sanitária</li>
-          <li data-cat="Bombeiros" onclick="switchCat(this)"><span class="cat-dot" style="background:#e84040"></span>Bombeiros</li>
-          <li data-cat="MeioAmbiente" onclick="switchCat(this)"><span class="cat-dot" style="background:#3dd6a3"></span>Meio Ambiente</li>
-          <li data-cat="PlanoDiretor" onclick="switchCat(this)"><span class="cat-dot" style="background:#ff9000"></span>Plano Diretor</li>
-          <li data-cat="Fluxograma" onclick="switchCat(this)"><span class="cat-dot" style="background:#3cc1c1"></span>Fluxograma</li>
-          <li data-cat="MateriaisGratis" onclick="switchCat(this)"><span class="cat-dot" style="background:#a3dd73"></span>Materiais Gratuitos</li>
-          <li data-cat="ComprasPublicas" onclick="switchCat(this)"><span class="cat-dot" style="background:#4f6fb7"></span>Compras Públicas</li>
-          <li data-cat="MapaEmpresas" onclick="switchCat(this)"><span class="cat-dot" style="background:#00b70f"></span>Mapa de Empresas</li>
-        </ul>
-      </div>
-
-      <!-- CARDS AREA -->
-      <div class="cards-area">
-
-        <!-- MEI -->
-        <div class="cat-panel active" id="cat-MEI">
-          <div class="cat-panel-title" style="color:#f5a623">MEI</div>
-          <p class="cat-panel-desc">Serviços essenciais para o Microempreendedor Individual.</p>
-          <div class="cards-grid">
-            <div class="card"><a href="https://sso.acesso.gov.br/login?client_id=mei.receita.economia.gov.br" target="_blank"><div class="card-top" style="background:#f5a623"></div><div class="card-body"><div class="card-icon" style="background:rgba(245,166,35,.12);color:#f5a623">📋</div><div class="card-name">Abertura / Formalização</div><div class="card-desc">Abra seu MEI inserindo seus dados no Portal do Empreendedor.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://mei.receita.economia.gov.br/alteracao/login" target="_blank"><div class="card-top" style="background:#f5a623"></div><div class="card-body"><div class="card-icon" style="background:rgba(245,166,35,.12);color:#f5a623">✏️</div><div class="card-name">Atualização de Dados</div><div class="card-desc">Atualize endereço, telefone e atividades do seu MEI.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="http://www8.receita.fazenda.gov.br/SimplesNacional/Aplicacoes/ATSPO/pgmei.app/Identificacao" target="_blank"><div class="card-top" style="background:#f5a623"></div><div class="card-body"><div class="card-icon" style="background:rgba(245,166,35,.12);color:#f5a623">🧾</div><div class="card-name">Emissão Guia Mensal</div><div class="card-desc">Gere o boleto DAS mensal do seu MEI.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://mei.receita.economia.gov.br/certificado/login" target="_blank"><div class="card-top" style="background:#f5a623"></div><div class="card-body"><div class="card-icon" style="background:rgba(245,166,35,.12);color:#f5a623">📄</div><div class="card-name">Comprovante CCMEI</div><div class="card-desc">Emita o Certificado da Condição de MEI.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://www8.receita.fazenda.gov.br/SimplesNacional/Servicos/Grupo.aspx?grp=19" target="_blank"><div class="card-top" style="background:#f5a623"></div><div class="card-body"><div class="card-icon" style="background:rgba(245,166,35,.12);color:#f5a623">💳</div><div class="card-name">Parcelamento</div><div class="card-desc">Parcele e emita guias do parcelamento (após dia 10).</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="http://www8.receita.fazenda.gov.br/SimplesNacional/Aplicacoes/ATSPO/dasnsimei.app/Identificacao" target="_blank"><div class="card-top" style="background:#f5a623"></div><div class="card-body"><div class="card-icon" style="background:rgba(245,166,35,.12);color:#f5a623">📊</div><div class="card-name">Declaração Anual (DASN)</div><div class="card-desc">Realize a declaração anual de faturamento (jan–maio).</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://mei.receita.economia.gov.br/baixa/solicitar" target="_blank"><div class="card-top" style="background:#f5a623"></div><div class="card-body"><div class="card-icon" style="background:rgba(245,166,35,.12);color:#f5a623">🔒</div><div class="card-name">Baixa MEI</div><div class="card-desc">Encerre o CNPJ do seu MEI.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://www.regularize.pgfn.gov.br/login" target="_blank"><div class="card-top" style="background:#f5a623"></div><div class="card-body"><div class="card-icon" style="background:rgba(245,166,35,.12);color:#f5a623">⚖️</div><div class="card-name">Parcelamento Dívida Ativa</div><div class="card-desc">Acesse o portal Regularize para parcelar débitos.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- CARTILHA DO MEI -->
-        <div class="cat-panel" id="cat-CartilhaDoMEI">
-          <div class="cat-panel-title" style="color:#00b70f">Cartilha do MEI</div>
-          <p class="cat-panel-desc">Guias e tutoriais passo a passo para o MEI.</p>
-          <div class="cards-grid">
-            <div class="card"><a href="PDFs/Cartilha do MEI/Conceitos e Requisitos.pdf" target="_blank"><div class="card-top" style="background:#00b70f"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,183,15,.1);color:#00b70f">📘</div><div class="card-name">Conceito e Requisitos</div><div class="card-desc">O que é MEI, vantagens e obrigações básicas.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="PDFs/Cartilha do MEI/Formalização do MEI.pdf" target="_blank"><div class="card-top" style="background:#00b70f"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,183,15,.1);color:#00b70f">📗</div><div class="card-name">Formalização</div><div class="card-desc">Passo a passo para se formalizar corretamente.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="PDFs/Cartilha do MEI/Emissão DAS MEI.pdf" target="_blank"><div class="card-top" style="background:#00b70f"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,183,15,.1);color:#00b70f">💰</div><div class="card-name">Emissão DAS-MEI</div><div class="card-desc">Como emitir a guia mensal de pagamento.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="PDFs/Cartilha do MEI/Declaração Anual.pdf" target="_blank"><div class="card-top" style="background:#00b70f"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,183,15,.1);color:#00b70f">📋</div><div class="card-name">Declaração Anual</div><div class="card-desc">Como fazer a DASN-MEI pelo SEBRAE-SC.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="PDFs/Cartilha do MEI/Benefícios Previdenciários do MEI.pdf" target="_blank"><div class="card-top" style="background:#00b70f"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,183,15,.1);color:#00b70f">🛡️</div><div class="card-name">Benefícios Previdenciários</div><div class="card-desc">Direitos do MEI e como obtê-los.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="PDFs/Cartilha do MEI/MEI Contrata Empregado.pdf" target="_blank"><div class="card-top" style="background:#00b70f"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,183,15,.1);color:#00b70f">👥</div><div class="card-name">Contratação de Empregado</div><div class="card-desc">Regras para contratar um funcionário sendo MEI.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="PDFs/Cartilha do MEI/Emissão Nota Fiscal.pdf" target="_blank"><div class="card-top" style="background:#00b70f"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,183,15,.1);color:#00b70f">🗒️</div><div class="card-name">Emissão de Nota Fiscal</div><div class="card-desc">Tipos de nota fiscal e como emitir.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="PDFs/Cartilha do MEI/Alteração e Baixa do MEI.pdf" target="_blank"><div class="card-top" style="background:#00b70f"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,183,15,.1);color:#00b70f">🔄</div><div class="card-name">Alteração e Baixa</div><div class="card-desc">Como alterar dados cadastrais ou encerrar o MEI.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="PDFs/Cartilha do MEI/Parcelamento MEI.pdf" target="_blank"><div class="card-top" style="background:#00b70f"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,183,15,.1);color:#00b70f">💳</div><div class="card-name">Parcelamento</div><div class="card-desc">Como solicitar parcelamento das guias DAS.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="PDFs/Cartilha do MEI/Alteração de Porte.pdf" target="_blank"><div class="card-top" style="background:#00b70f"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,183,15,.1);color:#00b70f">📈</div><div class="card-name">Alteração de Porte</div><div class="card-desc">Quando e como mudar a categoria da empresa.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="PDFs/Cartilha do MEI/MEI Caminhoneiro.pdf" target="_blank"><div class="card-top" style="background:#00b70f"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,183,15,.1);color:#00b70f">🚛</div><div class="card-name">MEI Caminhoneiro</div><div class="card-desc">Requisitos e benefícios desta categoria.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- NOTA FISCAL -->
-        <div class="cat-panel" id="cat-NotaFiscal">
-          <div class="cat-panel-title" style="color:#4f8ef7">Nota Fiscal</div>
-          <p class="cat-panel-desc">Emissão e gestão de notas fiscais para diferentes perfis.</p>
-          <div class="cards-grid">
-            <div class="card"><a href="https://www.nfse.gov.br/EmissorNacional/Login" target="_blank"><div class="card-top" style="background:#4f8ef7"></div><div class="card-body"><div class="card-icon" style="background:rgba(79,142,247,.1);color:#4f8ef7">🌐</div><div class="card-name">NF-e Serviço (MEI)</div><div class="card-desc">Emita Notas Fiscais Eletrônicas de Serviço pelo emissor nacional.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://riodocampo.atende.net/autoatendimento/servicos/acesso-ao-sistema-de-nota-fiscal-de-servico-eletronica/detalhar/1" target="_blank"><div class="card-top" style="background:#4f8ef7"></div><div class="card-body"><div class="card-icon" style="background:rgba(79,142,247,.1);color:#4f8ef7">🔑</div><div class="card-name">Acesso NF Eletrônica</div><div class="card-desc">Solicite acesso para emissão de notas de pessoa jurídica.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://riodocampo.atende.net/autoatendimento/servicos/acesso-ao-sistema-de-nota-fiscal-de-servico-eletronica/detalhar/1" target="_blank"><div class="card-top" style="background:#4f8ef7"></div><div class="card-body"><div class="card-icon" style="background:rgba(79,142,247,.1);color:#4f8ef7">📝</div><div class="card-name">NF de Serviço</div><div class="card-desc">Emita NF de serviços com cadastro municipal.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://riodocampo.atende.net/autoatendimento/servicos/acesso-ao-sistema-de-nota-fiscal-de-servico-eletronica/detalhar/1" target="_blank"><div class="card-top" style="background:#4f8ef7"></div><div class="card-body"><div class="card-icon" style="background:rgba(79,142,247,.1);color:#4f8ef7">📃</div><div class="card-name">NF Serviço Avulso</div><div class="card-desc">Para serviços esporádicos sem cadastro no município.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://riodocampo.atende.net/autoatendimento/servicos/guias-de-servicos-diversos/detalhar/1" target="_blank"><div class="card-top" style="background:#4f8ef7"></div><div class="card-body"><div class="card-icon" style="background:rgba(79,142,247,.1);color:#4f8ef7">💸</div><div class="card-name">Guia de Pagamento Avulso</div><div class="card-desc">Emita a guia de pagamento da nota avulsa.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- AUTÔNOMO -->
-        <div class="cat-panel" id="cat-Autonomo">
-          <div class="cat-panel-title" style="color:#ffd32e">Autônomo</div>
-          <p class="cat-panel-desc">Documentos necessários: RG/CPF, comprovante de endereço e título de conselho de classe.</p>
-          <div class="cards-grid">
-            <div class="card"><a href="http://regin.jucesc.sc.gov.br/tax.jucesc/ViabilidadeOpcaoV3.aspx" target="_blank"><div class="card-top" style="background:#ffd32e"></div><div class="card-body"><div class="card-icon" style="background:rgba(255,211,46,.1);color:#c9a800">📋</div><div class="card-name">Formalização / Inscrição</div><div class="card-desc">Registre-se como profissional autônomo no município.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://riodocampo.atende.net/autoatendimento/servicos/guias-de-issalvara" target="_blank"><div class="card-top" style="background:#ffd32e"></div><div class="card-body"><div class="card-icon" style="background:rgba(255,211,46,.1);color:#c9a800">💳</div><div class="card-name">Emissão Guias / Taxas</div><div class="card-desc">Gere guias de ISS e Alvará.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://riodocampo.atende.net/autoatendimento/servicos/impressao-do-alvara/detalhar/1" target="_blank"><div class="card-top" style="background:#ffd32e"></div><div class="card-body"><div class="card-icon" style="background:rgba(255,211,46,.1);color:#c9a800">🏷️</div><div class="card-name">Emissão de Alvará</div><div class="card-desc">Emita seu alvará após a solicitação.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="http://regin.jucesc.sc.gov.br/tax.jucesc/ViabilidadeOpcaoV3.aspx" target="_blank"><div class="card-top" style="background:#ffd32e"></div><div class="card-body"><div class="card-icon" style="background:rgba(255,211,46,.1);color:#c9a800">🔒</div><div class="card-name">Baixa</div><div class="card-desc">Encerre seu registro de autônomo.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="http://regin.jucesc.sc.gov.br/tax.jucesc/ViabilidadeOpcaoV3.aspx" target="_blank"><div class="card-top" style="background:#ffd32e"></div><div class="card-body"><div class="card-icon" style="background:rgba(255,211,46,.1);color:#c9a800">✏️</div><div class="card-name">Atualização Cadastral</div><div class="card-desc">Mantenha seus dados sempre atualizados.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- CONTABILIDADE -->
-        <div class="cat-panel" id="cat-Contabilidade">
-          <div class="cat-panel-title" style="color:#bdcf00">Contabilidade</div>
-          <p class="cat-panel-desc">Serviços contábeis e fiscais para empresas de Rio do Campo.</p>
-          <div class="cards-grid">
-            <div class="card"><a href="https://api.whatsapp.com/send?phone=554735648119" target="_blank"><div class="card-top" style="background:#bdcf00"></div><div class="card-body"><div class="card-icon" style="background:rgba(189,207,0,.1);color:#8fa000">📜</div><div class="card-name">Certidão de Baixa</div><div class="card-desc">Solicite via WhatsApp.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://api.whatsapp.com/send?phone=554735648119" target="_blank"><div class="card-top" style="background:#bdcf00"></div><div class="card-body"><div class="card-icon" style="background:rgba(189,207,0,.1);color:#8fa000">📊</div><div class="card-name">Extrato de Débito</div><div class="card-desc">Emita para PF ou PJ via WhatsApp.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://riodocampo.atende.net/autoatendimento/servicos/guias-de-issalvara" target="_blank"><div class="card-top" style="background:#bdcf00"></div><div class="card-body"><div class="card-icon" style="background:rgba(189,207,0,.1);color:#8fa000">💸</div><div class="card-name">Guias ISS / Alvará</div><div class="card-desc">Retire suas taxas de forma rápida.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://api.whatsapp.com/send?phone=554735648119" target="_blank"><div class="card-top" style="background:#bdcf00"></div><div class="card-body"><div class="card-icon" style="background:rgba(189,207,0,.1);color:#8fa000">🏷️</div><div class="card-name">Emissão de Alvará</div><div class="card-desc">Alvará municipal de Rio do Campo.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="http://regin.jucesc.sc.gov.br/tax.jucesc/ViabilidadeOpcaoV3.aspx" target="_blank"><div class="card-top" style="background:#bdcf00"></div><div class="card-body"><div class="card-icon" style="background:rgba(189,207,0,.1);color:#8fa000">✏️</div><div class="card-name">Atualização de Empresas</div><div class="card-desc">Mantenha os dados do seu CNPJ atualizados.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="http://regin.jucesc.sc.gov.br/tax.jucesc/ViabilidadeOpcaoV3.aspx" target="_blank"><div class="card-top" style="background:#bdcf00"></div><div class="card-body"><div class="card-icon" style="background:rgba(189,207,0,.1);color:#8fa000">🏢</div><div class="card-name">Abertura de Empresa</div><div class="card-desc">Consulte viabilidade e abra seu negócio.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- CERTIDÕES -->
-        <div class="cat-panel" id="cat-Certidoes">
-          <div class="cat-panel-title" style="color:#00bbbb">Certidões Negativas</div>
-          <p class="cat-panel-desc">Emita certidões nos âmbitos municipal, estadual e federal.</p>
-          <div class="cards-grid">
-            <div class="card"><a href="https://sat.sef.sc.gov.br/tax.NET/Sat.CtaCte.Web/SolicitacaoCnd.aspx" target="_blank"><div class="card-top" style="background:#00bbbb"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,187,187,.1);color:#00bbbb">🏛️</div><div class="card-name">Certidão Estadual</div><div class="card-desc">Emita certidão negativa estadual de SC.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://servicos.receitafederal.gov.br/servico/certidoes/#/home" target="_blank"><div class="card-top" style="background:#00bbbb"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,187,187,.1);color:#00bbbb">🇧🇷</div><div class="card-name">Certidão Federal</div><div class="card-desc">Emita certidão negativa da Receita Federal.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://riodocampo.atende.net/autoatendimento/servicos/certidao-negativa-de-debitos" target="_blank"><div class="card-top" style="background:#00bbbb"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,187,187,.1);color:#00bbbb">🏘️</div><div class="card-name">Certidão Municipal</div><div class="card-desc">Emita certidão negativa do município de Rio do Campo.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://www.tjsc.jus.br/web/judicial/certidoes" target="_blank"><div class="card-top" style="background:#00bbbb"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,187,187,.1);color:#00bbbb">⚖️</div><div class="card-name">Recuperação / Falência</div><div class="card-desc">Certidão de Recuperação Judicial e Falência (TJSC).</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://cndt-certidao.tst.jus.br/inicio.faces" target="_blank"><div class="card-top" style="background:#00bbbb"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,187,187,.1);color:#00bbbb">👷</div><div class="card-name">CNDT Trabalhista</div><div class="card-desc">Certidão Negativa de Débitos Trabalhistas (TST).</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp" target="_blank"><div class="card-top" style="background:#00bbbb"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,187,187,.1);color:#00bbbb">🔢</div><div class="card-name">Emissão CNPJ</div><div class="card-desc">Comprovante de Inscrição e Situação Cadastral.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- SECRETARIA -->
-        <div class="cat-panel" id="cat-Secretaria">
-          <div class="cat-panel-title" style="color:#ff4f4f">Secretaria do Estado</div>
-          <p class="cat-panel-desc">⚠️ Ao solicitar inscrição estadual, guarde o protocolo!</p>
-          <div class="cards-grid">
-            <div class="card"><a href="https://redesimservicos.rfb.gov.br/coletor-evt-especiais/coletor-evt-especiais" target="_blank"><div class="card-top" style="background:#ff4f4f"></div><div class="card-body"><div class="card-icon" style="background:rgba(255,79,79,.1);color:#ff4f4f">📝</div><div class="card-name">Solicitar Inscrição Estadual</div><div class="card-desc">Para empresas do SIMEI. Gerada em até 1 hora.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="http://servicos.receita.fazenda.gov.br/Servicos/fcpj/consulta.asp" target="_blank"><div class="card-top" style="background:#ff4f4f"></div><div class="card-body"><div class="card-icon" style="background:rgba(255,79,79,.1);color:#ff4f4f">🔍</div><div class="card-name">Acompanhar Protocolo</div><div class="card-desc">Acompanhe seu protocolo de inscrição estadual.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://sat.sef.sc.gov.br/tax.NET/tax.net.cadastro/conssc_sitcad.aspx" target="_blank"><div class="card-top" style="background:#ff4f4f"></div><div class="card-body"><div class="card-icon" style="background:rgba(255,79,79,.1);color:#ff4f4f">📜</div><div class="card-name">Comprovante Inscrição Estadual</div><div class="card-desc">Obrigatório para comércio e transporte interestadual.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://sat.sef.sc.gov.br/tax.NET/Sat.ControleAcesso.Web/CredenciamentoEletronicoParaMEI.aspx" target="_blank"><div class="card-top" style="background:#ff4f4f"></div><div class="card-body"><div class="card-icon" style="background:rgba(255,79,79,.1);color:#ff4f4f">🔑</div><div class="card-name">Acesso Nota Estadual</div><div class="card-desc">Solicite acesso ao S@T da Receita Estadual.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://sat.sef.sc.gov.br/tax.NET/Login.aspx" target="_blank"><div class="card-top" style="background:#ff4f4f"></div><div class="card-body"><div class="card-icon" style="background:rgba(255,79,79,.1);color:#ff4f4f">🗒️</div><div class="card-name">Nota Fiscal Estadual</div><div class="card-desc">Emita NF de venda, fabricação ou transporte pelo S@T.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- VIGILÂNCIA -->
-        <div class="cat-panel" id="cat-Vigilancia">
-          <div class="cat-panel-title" style="color:#5b9bd5">Vigilância Sanitária</div>
-          <p class="cat-panel-desc">Contato: <a href="https://api.whatsapp.com/send?phone=5547996230119" style="color:#5b9bd5">(47) 3564-8122</a></p>
-          <div class="cards-grid">
-            <div class="card"><a href="https://drive.google.com/file/d/1qBG9GCcQjTSUjKokaTfwsvVewsbfEg6W/view" target="_blank"><div class="card-top" style="background:#5b9bd5"></div><div class="card-body"><div class="card-icon" style="background:rgba(91,155,213,.1);color:#5b9bd5">📋</div><div class="card-name">Anexo V – Médio Risco</div><div class="card-desc">Formulário para atividades de médio risco.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://drive.google.com/file/d/1-0NP2c0QUT5IOVSvh0jNKfaW5-IOnFyZ/view" target="_blank"><div class="card-top" style="background:#5b9bd5"></div><div class="card-body"><div class="card-icon" style="background:rgba(91,155,213,.1);color:#5b9bd5">🟢</div><div class="card-name">Atividades de Baixo Risco</div><div class="card-desc">Dispensadas de alvará da vigilância sanitária.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://drive.google.com/file/d/1ngO-ce8ltZclL8NhZzcV3t4QPvmLXsFC/view" target="_blank"><div class="card-top" style="background:#5b9bd5"></div><div class="card-body"><div class="card-icon" style="background:rgba(91,155,213,.1);color:#5b9bd5">🟡</div><div class="card-name">Atividades de Médio Risco</div><div class="card-desc">Inspeção posterior à abertura.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://drive.google.com/file/d/1BcE7xq6HL6-Vn9Qwi9xzpo0Dnx_nmW3D/view" target="_blank"><div class="card-top" style="background:#5b9bd5"></div><div class="card-body"><div class="card-icon" style="background:rgba(91,155,213,.1);color:#5b9bd5">🔴</div><div class="card-name">Atividades de Alto Risco</div><div class="card-desc">Com inspeção prévia obrigatória.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://www.vigilanciasanitaria.sc.gov.br/" target="_blank"><div class="card-top" style="background:#5b9bd5"></div><div class="card-body"><div class="card-icon" style="background:rgba(91,155,213,.1);color:#5b9bd5">🌐</div><div class="card-name">Site da Vigilância</div><div class="card-desc">Portal oficial da VISA Santa Catarina.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- BOMBEIROS -->
-        <div class="cat-panel" id="cat-Bombeiros">
-          <div class="cat-panel-title" style="color:#e84040">Bombeiros</div>
-          <p class="cat-panel-desc">Instruções normativas e orientações do Corpo de Bombeiros de SC.</p>
-          <div class="cards-grid">
-            <div class="card"><a href="https://www.cbm.sc.gov.br/index.php/sci/instrucoes-normativas" target="_blank"><div class="card-top" style="background:#e84040"></div><div class="card-body"><div class="card-icon" style="background:rgba(232,64,64,.1);color:#e84040">🚒</div><div class="card-name">Site dos Bombeiros</div><div class="card-desc">Instruções normativas do CBM-SC.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- MEIO AMBIENTE -->
-        <div class="cat-panel" id="cat-MeioAmbiente">
-          <div class="cat-panel-title" style="color:#3dd6a3">Meio Ambiente</div>
-          <p class="cat-panel-desc">Licenciamento ambiental e orientações do IMA-SC.</p>
-          <div class="cards-grid">
-            <div class="card"><a href="https://in.ima.sc.gov.br/" target="_blank"><div class="card-top" style="background:#3dd6a3"></div><div class="card-body"><div class="card-icon" style="background:rgba(61,214,163,.1);color:#3dd6a3">🌿</div><div class="card-name">Meio Ambiente</div><div class="card-desc">Cartilha orientativa e serviços do IMA-SC.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- PLANO DIRETOR -->
-        <div class="cat-panel" id="cat-PlanoDiretor">
-          <div class="cat-panel-title" style="color:#ff9000">Plano Diretor</div>
-          <p class="cat-panel-desc">Legislação municipal de zoneamento e uso do solo.</p>
-          <div class="cards-grid">
-            <div class="card"><a href="https://leismunicipais.com.br/plano-diretor-rio-do-campo-sc" target="_blank"><div class="card-top" style="background:#ff9000"></div><div class="card-body"><div class="card-icon" style="background:rgba(255,144,0,.1);color:#ff9000">🗺️</div><div class="card-name">Plano Diretor</div><div class="card-desc">Consulte o Plano Diretor de Rio do Campo.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- FLUXOGRAMA -->
-        <div class="cat-panel" id="cat-Fluxograma">
-          <div class="cat-panel-title" style="color:#3cc1c1">Fluxograma</div>
-          <p class="cat-panel-desc">Abrir empresa em Rio do Campo é rápido e fácil — sem taxas a partir de 2023!</p>
-          <div class="cards-grid">
-            <div class="card"><a href="/assets/flowcharts/fluxo-abertura-de-empresas.pdf" target="_blank"><div class="card-top" style="background:#3cc1c1"></div><div class="card-body"><div class="card-icon" style="background:rgba(60,193,193,.1);color:#3cc1c1">📊</div><div class="card-name">Fluxograma de Abertura</div><div class="card-desc">Veja o passo a passo visual para abrir sua empresa.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- MATERIAIS GRATUITOS -->
-        <div class="cat-panel" id="cat-MateriaisGratis">
-          <div class="cat-panel-title" style="color:#a3dd73">Materiais Gratuitos</div>
-          <p class="cat-panel-desc">Cursos e ferramentas gratuitas em parceria com o SEBRAE.</p>
-          <div class="cards-grid">
-            <div class="card"><a href="https://www.sebrae-sc.com.br/ebook/relatorio-anual-de-faturamento-do-mei-planner-2" target="_blank"><div class="card-top" style="background:#a3dd73"></div><div class="card-body"><div class="card-icon" style="background:rgba(163,221,115,.1);color:#7ab040">📊</div><div class="card-name">Tabela Controle Financeiro</div><div class="card-desc">Planilha com cálculo automático mensal para o relatório anual.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- COMPRAS PÚBLICAS -->
-        <div class="cat-panel" id="cat-ComprasPublicas">
-          <div class="cat-panel-title" style="color:#4f6fb7">Compras Públicas</div>
-          <p class="cat-panel-desc">Licitações, editais e guias para fornecedores do município.</p>
-          <div class="cards-grid">
-            <div class="card"><a href="/PDFs/Plano de Compras.pdf" target="_blank"><div class="card-top" style="background:#4f6fb7"></div><div class="card-body"><div class="card-icon" style="background:rgba(79,111,183,.1);color:#4f6fb7">📋</div><div class="card-name">Plano Anual de Compras</div><div class="card-desc">Veja o PAC de Rio do Campo.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://docs.google.com/forms/d/1oBTpsJWgit27O4lUz8MHDBdR062XilgbqW-avOo4mSQ/" target="_blank"><div class="card-top" style="background:#4f6fb7"></div><div class="card-body"><div class="card-icon" style="background:rgba(79,111,183,.1);color:#4f6fb7">📝</div><div class="card-name">Cadastro de Fornecedores</div><div class="card-desc">Cadastre-se para ser contatado em editais.</div><span class="card-arrow">↗</span></div></a></div>
-            <div class="card"><a href="https://riodocampo.atende.net/autoatendimento/servicos/consulta-de-licitacoes" target="_blank"><div class="card-top" style="background:#4f6fb7"></div><div class="card-body"><div class="card-icon" style="background:rgba(79,111,183,.1);color:#4f6fb7">📢</div><div class="card-name">Licitações Abertas</div><div class="card-desc">Confira os editais abertos do município.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-        <!-- MAPA DE EMPRESAS -->
-        <div class="cat-panel" id="cat-MapaEmpresas">
-          <div class="cat-panel-title" style="color:#00b70f">Mapa de Empresas</div>
-          <p class="cat-panel-desc">Acompanhe o número de empresas no Brasil, em SC e em Rio do Campo.</p>
-          <div class="cards-grid">
-            <div class="card"><a href="https://www.gov.br/empresas-e-negocios/pt-br/mapa-de-empresas/painel-mapa-de-empresas" target="_blank"><div class="card-top" style="background:#00b70f"></div><div class="card-body"><div class="card-icon" style="background:rgba(0,183,15,.1);color:#00b70f">🗺️</div><div class="card-name">Mapa de Empresas</div><div class="card-desc">Painel nacional, estadual e municipal de empresas.</div><span class="card-arrow">↗</span></div></a></div>
-          </div>
-        </div>
-
-      </div><!-- /cards-area -->
-    </div><!-- /materiais-layout -->
-  </div>
-</section>
-
-<!-- CAPACITAÇÕES -->
-<section class="content-section" id="capacitacoes">
-  <div class="section-inner">
-    <div class="section-label">Capacitações</div>
-    <h2 class="section-title">Aprenda com as melhores <br>plataformas do mundo</h2>
-    <p class="section-sub">Cursos online gratuitos e pagos para impulsionar seu negócio.</p>
-
-    <div class="cursos-grid">
-      <div class="curso-card"><a href="https://riodocampomaisempregos.santacatarinapelaeducacao.com.br/" target="_blank"><div class="curso-logo" style="background:#1a1a2e"><img src="assets/emprega já.png" alt="Emprega Já" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=\'color:#4f8ef7;font-family:Syne,sans-serif;font-weight:700;font-size:18px\'>Emprega Já</span>'"/></div><div class="curso-body"><h3>Emprega Já Rio do Campo</h3><p>Plataforma de busca de empregos local.</p><span class="curso-tag">Local</span></div></a></div>
-      <div class="curso-card"><a href="https://sebrae.com.br/sites/PortalSebrae/" target="_blank"><div class="curso-logo"><img src="assets/capacitacoes/sebrae.jpeg" alt="SEBRAE" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=\'color:#00a651;font-family:Syne,sans-serif;font-weight:700;font-size:24px\'>SEBRAE</span>'"/></div><div class="curso-body"><h3>SEBRAE</h3><p>Cursos gratuitos, consultoria e conteúdos para empreendedores.</p><span class="curso-tag">Gratuito</span></div></a></div>
-      <div class="curso-card"><a href="https://cursos.sandbox.ee/todos-cursos" target="_blank"><div class="curso-logo"><img src="assets/capacitacoes/sandbox.png" alt="Sandbox" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=\'color:#333;font-family:Syne,sans-serif;font-weight:700;font-size:22px\'>Sandbox</span>'"/></div><div class="curso-body"><h3>Sandbox</h3><p>Estratégia ágil, marketing digital e pensamento estratégico.</p><span class="curso-tag">Online</span></div></a></div>
-      <div class="curso-card"><a href="https://veduca.org/courses/" target="_blank"><div class="curso-logo"><img src="assets/capacitacoes/veduca.png" alt="Veduca" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=\'color:#e84040;font-family:Syne,sans-serif;font-weight:700;font-size:22px\'>Veduca</span>'"/></div><div class="curso-body"><h3>Veduca</h3><p>Plataforma EAD com cursos gratuitos e certificados.</p><span class="curso-tag">Gratuito</span></div></a></div>
-      <div class="curso-card"><a href="https://educacao-executiva.fgv.br/cursos/online" target="_blank"><div class="curso-logo"><img src="assets/capacitacoes/FGV.png" alt="FGV" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=\'color:#003087;font-family:Syne,sans-serif;font-weight:800;font-size:24px\'>FGV</span>'"/></div><div class="curso-body"><h3>FGV Online</h3><p>Cursos de alta qualidade com formação profissional reconhecida.</p><span class="curso-tag">Certificado</span></div></a></div>
-      <div class="curso-card"><a href="https://www.edx.org/" target="_blank"><div class="curso-logo"><svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 0 553 311"><polygon fill="#02262b" points="353,51 364,0 51,0 0,245 262,245 247,311 498,311 553,51"/><path fill="#fff" d="M107,214c-7,0-14-1-20-3-6-2-12-6-16-10-5-5-8-10-11-17-3-7-4-14-4-23 0-12 2-22 5-32 3-10 8-18 14-25 6-7 13-12 21-16 8-4 17-6 27-6 7,0 13,1 19,3 6,2 11,6 15,10 4,4 8,10 11,16 3,6 4,14 4,22 0,1 0,3 0,4 0,2 0,3 0,5 0,2 0,4 0,5 0,2 0,3-1,4H76c0,1 0,2 0,3 0,1 0,2 0,3 0,7 1,12 3,17 2,5 4,8 7,11 3,3 6,5 10,6 4,1 8,2 11,2 8,0 15-1 20-4 5-3 9-7 12-12h22c-1,5-4,9-7,14-3,4-7,8-12,11-5,3-10,6-16,7C121,213 114,214 107,214zM148,136c0,0 0-1 0-2 0-1 0-2 0-3 0-4-1-8-2-12-1-4-3-7-6-10-2-3-5-5-9-7-4-2-8-2-13-2-5,0-9,1-14,3-4,2-8,4-12,7-3,3-6,7-9,11-3,4-5,9-6,15H148z"/><path fill="#fff" d="M228,214c-6,0-12-1-18-4-6-2-11-6-15-10-4-4-8-10-10-16-2-6-4-14-4-21 0-8 1-15 2-22 2-7 4-13 7-19 3-6 6-11 10-16 4-5 8-9 13-12 5-3 10-6 16-8 6-2 12-3 18-3 5,0 9,1 13,2 4,1 8,3 11,5 3,2 6,5 9,8 2,3 4,7 5,10h2l16-74h21l-38,178h-20l4-17h-2c-5,6-10,11-17,14C244,212 236,214 228,214zM234,195c7,0 13-2 18-5 6-3 11-7 15-13 4-5 7-12 10-19 2-7 4-15 4-24 0-5-1-10-2-15-2-4-4-8-6-11-3-3-6-5-10-7-4-2-8-2-13-2-7,0-13,1-18,4-6,3-10,7-15,12-4,5-7,11-10,19-2,7-4,15-4,24 0,5 1,10 2,15 2,4 4,8 6,12 3,3 6,6 10,7C225,195 229,195 234,195z"/><polygon fill="#fff" points="509,84 463,84 412,147 410,147 383,84 337,84 377,175 290,277 336,277 391,212 395,212 425,277 471,277 427,179"/></svg></div><div class="curso-body"><h3>EdX</h3><p>Cursos de Harvard, MIT e universidades renomadas do mundo.</p><span class="curso-tag">Gratuito</span></div></a></div>
-      <div class="curso-card"><a href="https://www.coursera.org/" target="_blank"><div class="curso-logo"><img src="assets/capacitacoes/coursera.png" alt="Coursera" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=\'color:#0056D2;font-family:Syne,sans-serif;font-weight:800;font-size:20px\'>Coursera</span>'"/></div><div class="curso-body"><h3>Coursera</h3><p>Certificações de Google, IBM e universidades globais.</p><span class="curso-tag">Certificado</span></div></a></div>
-      <div class="curso-card"><a href="https://www.linkedin.com/learning/" target="_blank"><div class="curso-logo"><img src="assets/capacitacoes/linkedinlearning.jpeg" alt="LinkedIn Learning" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=\'color:#0077B5;font-family:Syne,sans-serif;font-weight:700;font-size:17px\'>LinkedIn Learning</span>'"/></div><div class="curso-body"><h3>LinkedIn Learning</h3><p>Milhares de cursos em 25 idiomas para profissionais.</p><span class="curso-tag">Profissional</span></div></a></div>
-      <div class="curso-card"><a href="https://online.stanford.edu/explore" target="_blank"><div class="curso-logo"><img src="assets/capacitacoes/stanfordonline.jpeg" alt="Stanford Online" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=\'color:#8C1515;font-family:Syne,sans-serif;font-weight:700;font-size:17px\'>Stanford Online</span>'"/></div><div class="curso-body"><h3>Stanford Online</h3><p>Oportunidades educacionais de nível mundial.</p><span class="curso-tag">Premium</span></div></a></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTATO -->
-<section class="content-section" id="contato">
-  <div class="section-inner">
-    <div class="section-label">Contato</div>
-    <h2 class="section-title">Estamos aqui para <br>te atender</h2>
-    <p class="section-sub">Atendimento presencial, por WhatsApp ou e-mail.</p>
-
-    <div class="contato-grid">
-      <div class="contato-info">
-        <div class="contato-item">
-          <div class="contato-icon">
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M13.6 2.33A7.85 7.85 0 0 0 8 0C3.6 0 .07 3.56.06 7.93c0 1.4.37 2.76 1.06 3.96L0 16l4.2-1.1a7.9 7.9 0 0 0 3.79.96h.004c4.37 0 7.93-3.56 7.93-7.93a7.9 7.9 0 0 0-2.33-5.59z"/></svg>
-          </div>
-          <div class="contato-detail">
-            <div class="label">WhatsApp</div>
-            <a href="https://api.whatsapp.com/send?phone=554735648122" target="_blank">(47) 3564-8122</a>
-          </div>
-        </div>
-        <div class="contato-item">
-          <div class="contato-icon">
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.71 2.825L15 11.1V5.383zm-.03 6.876-5.64-3.47L8 9.58l-1.33-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .97-.741zM1 11.1l4.71-2.897L1 5.383V11.1z"/></svg>
-          </div>
-          <div class="contato-detail">
-            <div class="label">E-mail</div>
-            <a href="mailto:rdc.empreendedor@gmail.com">rdc.empreendedor@gmail.com</a>
-          </div>
-        </div>
-        <div class="contato-item">
-          <div class="contato-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="contato-detail">
-            <div class="label">Horário de atendimento</div>
-            <span>Seg. a Sex. — 7h30 às 11h30 e 13h às 17h</span>
-          </div>
-        </div>
-        <div class="contato-item">
-          <div class="contato-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div class="contato-detail">
-            <div class="label">Endereço</div>
-            <a href="https://www.google.com.br/maps/place/Sala+do+Empreendedor+Rio+do+Campo-SC" target="_blank">
-              Rua 29 de Dezembro, Nº 70 — Floresta<br>Rio do Campo — SC, 89198-000
-            </a>
-          </div>
-        </div>
-        <a href="https://www.instagram.com/saladoempreendedorrdc/" target="_blank" class="contato-item" style="cursor:pointer;">
-          <div class="contato-icon" style="color:#e1306c">
-            <svg width="18" height="18" viewBox="0 0 30 27" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.03 0C10.61.01 11.12 0 15.15 0c4.03 0 4.54.01 6.12.08 1.58.07 2.66.3 3.6.63.99.34 1.89.87 2.63 1.56.76.67 1.34 1.49 1.72 2.39.37.86.62 1.84.69 3.28.07 1.44.08 1.9.08 5.57 0 3.67-.02 4.12-.08 5.56-.07 1.43-.33 2.42-.69 3.27-.37.9-.96 1.72-1.72 2.39-.74.69-1.64 1.22-2.63 1.56-.95.33-2.04.56-3.6.62-1.58.07-2.07.08-6.12.08-4.04 0-4.54-.01-6.12-.08-1.58-.07-2.66-.3-3.61-.62a7.04 7.04 0 0 1-2.63-1.56A7.12 7.12 0 0 1 1.08 22.3C.71 21.48.46 20.5.39 19.06.32 17.62.3 17.17.3 13.5c0-3.67.02-4.12.09-5.56.07-1.44.32-2.42.69-3.28.37-.9.96-1.71 1.72-2.39A7.02 7.02 0 0 1 5.42.71C6.37.38 7.45.15 9.03.08V0z"/></svg>
-          </div>
-          <div class="contato-detail">
-            <div class="label">Instagram</div>
-            <span>@saladoempreendedorrdc</span>
-          </div>
+      /* ── ANIMATIONS ──────────────────────────── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .hero-content > * {
+        animation: fadeUp 0.6s ease both;
+      }
+      .hero-content > *:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .hero-content > *:nth-child(2) {
+        animation-delay: 0.15s;
+      }
+      .hero-content > *:nth-child(3) {
+        animation-delay: 0.25s;
+      }
+      .hero-content > *:nth-child(4) {
+        animation-delay: 0.35s;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="topbar-inner">
+        <a href="https://api.whatsapp.com/send?phone=554735648122" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+            <path
+              d="M13.6 2.33A7.85 7.85 0 0 0 8 0C3.6 0 .07 3.56.06 7.93c0 1.4.37 2.76 1.06 3.96L0 16l4.2-1.1a7.9 7.9 0 0 0 3.79.96h.004c4.37 0 7.93-3.56 7.93-7.93a7.9 7.9 0 0 0-2.33-5.59zM8 14.52a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.67-2.43-.16-.25A6.56 6.56 0 0 1 1.41 7.9c0-3.63 2.96-6.58 6.59-6.58a6.56 6.56 0 0 1 6.59 6.58c0 3.64-2.96 6.6-6.59 6.6zm3.61-4.93c-.2-.1-1.17-.58-1.35-.65-.18-.06-.32-.1-.44.1-.13.2-.51.65-.63.78-.11.13-.23.15-.43.05-.2-.1-.84-.31-1.59-.99-.59-.52-.98-1.17-1.1-1.37-.12-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.33.06-.13.03-.25-.02-.35-.05-.1-.44-1.08-.6-1.47-.16-.39-.33-.34-.45-.34h-.38a.73.73 0 0 0-.53.25c-.18.2-.69.68-.69 1.65 0 .98.71 1.92.81 2.05.1.13 1.39 2.13 3.38 2.99.47.2.84.33 1.13.42.47.15.9.13 1.24.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.08-.18-.13-.38-.23z"
+            />
+          </svg>
+          (47) 3564-8122
+        </a>
+        <a href="tel:554735648122" target="_blank">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-phone-icon lucide-phone"
+          >
+            <path
+              d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"
+            />
+          </svg>
+          (47) 3564-8122
+        </a>
+        <a href="mailto:rdc.empreendedor@gmail.com" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+            <path
+              d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.71 2.825L15 11.1V5.383zm-.03 6.876-5.64-3.47L8 9.58l-1.33-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .97-.741zM1 11.1l4.71-2.897L1 5.383V11.1z"
+            />
+          </svg>
+          rdc.empreendedor@gmail.com
+        </a>
+        <a href="https://www.instagram.com/saladoempreendedorrdc/" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 30 27" fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M9.03 0C10.61.01 11.12 0 15.15 0c4.03 0 4.54.01 6.12.08 1.58.07 2.66.3 3.6.63.99.34 1.89.87 2.63 1.56.76.67 1.34 1.49 1.72 2.39.37.86.62 1.84.69 3.28.07 1.44.08 1.9.08 5.57 0 3.67-.02 4.12-.08 5.56-.07 1.43-.33 2.42-.69 3.27-.37.9-.96 1.72-1.72 2.39-.74.69-1.64 1.22-2.63 1.56-.95.33-2.04.56-3.6.62-1.58.07-2.07.08-6.12.08-4.04 0-4.54-.01-6.12-.08-1.58-.07-2.66-.3-3.61-.62a7.04 7.04 0 0 1-2.63-1.56A7.12 7.12 0 0 1 1.08 22.3C.71 21.48.46 20.5.39 19.06.32 17.62.3 17.17.3 13.5c0-3.67.02-4.12.09-5.56.07-1.44.32-2.42.69-3.28.37-.9.96-1.71 1.72-2.39A7.02 7.02 0 0 1 5.42.71C6.37.38 7.45.15 9.03.08V0zm12.12 2.51C19.58 2.45 19.12 2.43 15.15 2.43c-3.97 0-4.43.01-5.99.07-1.45.06-2.24.28-2.76.46-.69.25-1.19.54-1.71 1.02a4.55 4.55 0 0 0-1.09 1.54c-.21.48-.45 1.19-.52 2.51-.07 1.42-.08 1.85-.08 5.47 0 3.61.01 4.04.08 5.46.07 1.32.31 2.02.52 2.51.24.58.62 1.11 1.09 1.54.48.45 1.02.79 1.71 1.01.52.18 1.31.4 2.76.46 1.56.06 2.02.08 5.99.08 3.96 0 4.42-.02 5.98-.08 1.45-.07 2.23-.28 2.76-.46.69-.25 1.19-.56 1.71-1.01.49-.44.87-.97 1.1-1.54.2-.48.45-1.19.52-2.51.07-1.42.08-1.85.08-5.46 0-3.62-.01-4.05-.08-5.47-.07-1.32-.31-2.02-.52-2.51a4.57 4.57 0 0 0-1.1-1.54 4.07 4.07 0 0 0-1.71-1.02c-.53-.18-1.31-.4-2.76-.46zM13.25 17.66a4.9 4.9 0 0 0 6.75-6.56 4.9 4.9 0 0 0-8.58 4.63 4.88 4.88 0 0 0 1.83 1.93zm-2.53-9.07A7.08 7.08 0 0 1 22.78 13.5a7.08 7.08 0 0 1-15.27 0 7.08 7.08 0 0 1 5.21-6.9zm11.72-.47a1.66 1.66 0 1 1-2.17-2.49 1.66 1.66 0 0 1 2.17 2.49z"
+            />
+          </svg>
+          Instagram
         </a>
       </div>
+    </div>
 
-      <div class="map-embed">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.8!2d-50.1455959!3d-26.949208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e09979c937911f%3A0xa03d3be9304c3c0a!2sSala%20do%20Empreendedor%20Rio%20do%20Campo-SC!5e0!3m2!1spt-BR!2sbr!4v1"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Mapa Sala do Empreendedor">
-        </iframe>
+    <!-- NAV -->
+    <nav>
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <div class="nav-logo-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+              <line x1="7" y1="7" x2="7.01" y2="7" />
+            </svg>
+          </div>
+          <div>
+            Sala do Empreendedor
+            <span class="sub">Rio do Campo — SC</span>
+          </div>
+        </div>
+
+        <div class="nav-links">
+          <a href="#aprendizado">Materiais</a>
+          <a href="#capacitacoes">Capacitações</a>
+          <a href="https://riodocampo.atende.net/cidadao/noticia/conheca-a-sala-do-empreendedor" target="_blank">Sobre</a>
+          <a href="#contato" class="cta">Fale conosco</a>
+        </div>
+
+        <a class="nav-insta" href="https://www.instagram.com/saladoempreendedorrdc/" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 30 27" fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M9.03 0C10.61.01 11.12 0 15.15 0c4.03 0 4.54.01 6.12.08 1.58.07 2.66.3 3.6.63.99.34 1.89.87 2.63 1.56.76.67 1.34 1.49 1.72 2.39.37.86.62 1.84.69 3.28.07 1.44.08 1.9.08 5.57 0 3.67-.02 4.12-.08 5.56-.07 1.43-.33 2.42-.69 3.27-.37.9-.96 1.72-1.72 2.39-.74.69-1.64 1.22-2.63 1.56-.95.33-2.04.56-3.6.62-1.58.07-2.07.08-6.12.08-4.04 0-4.54-.01-6.12-.08-1.58-.07-2.66-.3-3.61-.62a7.04 7.04 0 0 1-2.63-1.56A7.12 7.12 0 0 1 1.08 22.3C.71 21.48.46 20.5.39 19.06.32 17.62.3 17.17.3 13.5c0-3.67.02-4.12.09-5.56.07-1.44.32-2.42.69-3.28.37-.9.96-1.71 1.72-2.39A7.02 7.02 0 0 1 5.42.71C6.37.38 7.45.15 9.03.08V0zm12.12 2.51C19.58 2.45 19.12 2.43 15.15 2.43c-3.97 0-4.43.01-5.99.07-1.45.06-2.24.28-2.76.46-.69.25-1.19.54-1.71 1.02a4.55 4.55 0 0 0-1.09 1.54c-.21.48-.45 1.19-.52 2.51-.07 1.42-.08 1.85-.08 5.47 0 3.61.01 4.04.08 5.46.07 1.32.31 2.02.52 2.51.24.58.62 1.11 1.09 1.54.48.45 1.02.79 1.71 1.01.52.18 1.31.4 2.76.46 1.56.06 2.02.08 5.99.08 3.96 0 4.42-.02 5.98-.08 1.45-.07 2.23-.28 2.76-.46.69-.25 1.19-.56 1.71-1.01.49-.44.87-.97 1.1-1.54.2-.48.45-1.19.52-2.51.07-1.42.08-1.85.08-5.46 0-3.62-.01-4.05-.08-5.47-.07-1.32-.31-2.02-.52-2.51a4.57 4.57 0 0 0-1.1-1.54 4.07 4.07 0 0 0-1.71-1.02c-.53-.18-1.31-.4-2.76-.46zM13.25 17.66a4.9 4.9 0 0 0 6.75-6.56 4.9 4.9 0 0 0-8.58 4.63 4.88 4.88 0 0 0 1.83 1.93zm-2.53-9.07A7.08 7.08 0 0 1 22.78 13.5a7.08 7.08 0 0 1-15.27 0 7.08 7.08 0 0 1 5.21-6.9zm11.72-.47a1.66 1.66 0 1 1-2.17-2.49 1.66 1.66 0 0 1 2.17 2.49z"
+            />
+          </svg>
+          @saladoempreendedorrdc
+        </a>
+
+        <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu" onclick="closeMobileOnBg(event)">
+      <div class="mobile-menu-panel">
+        <div class="close-btn" onclick="toggleMenu()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </div>
+        <a href="#aprendizado" onclick="toggleMenu()">Materiais</a>
+        <a href="#capacitacoes" onclick="toggleMenu()">Capacitações</a>
+        <a href="https://riodocampo.atende.net/cidadao/noticia/conheca-a-sala-do-empreendedor" target="_blank">Sobre nós</a>
+        <a href="#contato" onclick="toggleMenu()">Fale conosco</a>
+        <a href="https://api.whatsapp.com/send?phone=554735648122" target="_blank">WhatsApp</a>
+        <a href="tel:554735648122" target="_blank">Telefone</a>
+        <a href="https://www.instagram.com/saladoempreendedorrdc/" target="_blank">Instagram</a>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <div class="icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-content">
+        <div class="hero-badge">Em parceria com o SEBRAE</div>
+        <h1>Apoio completo para o seu <em>negócio</em> crescer</h1>
+        <p>Abra sua empresa, emita documentos, acesse capacitações e resolva tudo o que você precisa para empreender em Rio do Campo.</p>
+        <div class="hero-ctas">
+          <a href="#aprendizado" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+            </svg>
+            Ver materiais
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=554735648122" target="_blank" class="btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M13.6 2.33A7.85 7.85 0 0 0 8 0C3.6 0 .07 3.56.06 7.93c0 1.4.37 2.76 1.06 3.96L0 16l4.2-1.1a7.9 7.9 0 0 0 3.79.96h.004c4.37 0 7.93-3.56 7.93-7.93a7.9 7.9 0 0 0-2.33-5.59z" />
+            </svg>
+            Falar no WhatsApp
+          </a>
+        </div>
       </div>
-      Sala do Empreendedor
     </div>
 
-    <div class="footer-links">
-      <a href="#aprendizado">Materiais</a>
-      <a href="#capacitacoes">Capacitações</a>
-      <a href="#contato">Contato</a>
-      <a href="https://riodocampo.atende.net" target="_blank">Prefeitura</a>
+    <!-- STATS STRIP -->
+    <div class="stats-strip">
+      <div class="stats-inner">
+        <div class="stat">
+          <span class="stat-num">15+</span>
+          <span class="stat-label">Categorias de serviço</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">60+</span>
+          <span class="stat-label">Links e materiais</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">12</span>
+          <span class="stat-label">Plataformas de capacitação</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">Grátis</span>
+          <span class="stat-label">Atendimento presencial</span>
+        </div>
+      </div>
     </div>
 
-    <div class="footer-meta">
-      Rio do Campo — SC<br>
-      Em parceria com o SEBRAE
-    </div>
-  </div>
-</footer>
+    <!-- MATERIAIS -->
+    <section class="content-section" id="aprendizado">
+      <div class="section-inner">
+        <div class="section-label">Nossos materiais</div>
+        <h2 class="section-title">Tudo que você precisa, <br />num só lugar</h2>
+        <p class="section-sub">Clique em uma categoria para ver os serviços disponíveis.</p>
 
-<script>
-  // Categoria switcher
-  function switchCat(el) {
-    document.querySelectorAll('#catList li').forEach(li => li.classList.remove('active'));
-    el.classList.add('active');
+        <div class="materiais-layout">
+          <!-- SIDEBAR -->
+          <div class="cat-sidebar">
+            <div class="cat-sidebar-title">Categorias</div>
+            <ul id="catList">
+              <li class="active" data-cat="MEI" onclick="switchCat(this)"><span class="cat-dot" style="background: #f5a623"></span>MEI</li>
+              <li data-cat="CartilhaDoMEI" onclick="switchCat(this)"><span class="cat-dot" style="background: #00b70f"></span>Cartilha do MEI</li>
+              <li data-cat="NotaFiscal" onclick="switchCat(this)"><span class="cat-dot" style="background: #4f8ef7"></span>Nota Fiscal</li>
+              <li data-cat="Autonomo" onclick="switchCat(this)"><span class="cat-dot" style="background: #ffd32e"></span>Autônomo</li>
+              <li data-cat="Contabilidade" onclick="switchCat(this)"><span class="cat-dot" style="background: #bdcf00"></span>Contabilidade</li>
+              <li data-cat="Certidoes" onclick="switchCat(this)"><span class="cat-dot" style="background: #00bbbb"></span>Certidões Negativas</li>
+              <li data-cat="Secretaria" onclick="switchCat(this)"><span class="cat-dot" style="background: #ff4f4f"></span>Secretaria do Estado</li>
+              <li data-cat="Vigilancia" onclick="switchCat(this)"><span class="cat-dot" style="background: #5b9bd5"></span>Vigilância Sanitária</li>
+              <li data-cat="Bombeiros" onclick="switchCat(this)"><span class="cat-dot" style="background: #e84040"></span>Bombeiros</li>
+              <li data-cat="MeioAmbiente" onclick="switchCat(this)"><span class="cat-dot" style="background: #3dd6a3"></span>Meio Ambiente</li>
+              <li data-cat="PlanoDiretor" onclick="switchCat(this)"><span class="cat-dot" style="background: #ff9000"></span>Plano Diretor</li>
+              <li data-cat="Fluxograma" onclick="switchCat(this)"><span class="cat-dot" style="background: #3cc1c1"></span>Fluxograma</li>
+              <li data-cat="MateriaisGratis" onclick="switchCat(this)"><span class="cat-dot" style="background: #a3dd73"></span>Materiais Gratuitos</li>
+              <li data-cat="ComprasPublicas" onclick="switchCat(this)"><span class="cat-dot" style="background: #4f6fb7"></span>Compras Públicas</li>
+              <li data-cat="MapaEmpresas" onclick="switchCat(this)"><span class="cat-dot" style="background: #00b70f"></span>Mapa de Empresas</li>
+            </ul>
+          </div>
 
-    const cat = el.dataset.cat;
-    document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
-    const panel = document.getElementById('cat-' + cat);
-    if (panel) panel.classList.add('active');
-  }
+          <!-- CARDS AREA -->
+          <div class="cards-area">
+            <!-- MEI -->
+            <div class="cat-panel active" id="cat-MEI">
+              <div class="cat-panel-title" style="color: #f5a623">MEI</div>
+              <p class="cat-panel-desc">Serviços essenciais para o Microempreendedor Individual.</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="https://sso.acesso.gov.br/login?client_id=mei.receita.economia.gov.br" target="_blank"
+                    ><div class="card-top" style="background: #f5a623"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(245, 166, 35, 0.12); color: #f5a623">📋</div>
+                      <div class="card-name">Abertura / Formalização</div>
+                      <div class="card-desc">Abra seu MEI inserindo seus dados no Portal do Empreendedor.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://mei.receita.economia.gov.br/alteracao/login" target="_blank"
+                    ><div class="card-top" style="background: #f5a623"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(245, 166, 35, 0.12); color: #f5a623">✏️</div>
+                      <div class="card-name">Atualização de Dados</div>
+                      <div class="card-desc">Atualize endereço, telefone e atividades do seu MEI.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="http://www8.receita.fazenda.gov.br/SimplesNacional/Aplicacoes/ATSPO/pgmei.app/Identificacao" target="_blank"
+                    ><div class="card-top" style="background: #f5a623"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(245, 166, 35, 0.12); color: #f5a623">🧾</div>
+                      <div class="card-name">Emissão Guia Mensal</div>
+                      <div class="card-desc">Gere o boleto DAS mensal do seu MEI.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://mei.receita.economia.gov.br/certificado/login" target="_blank"
+                    ><div class="card-top" style="background: #f5a623"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(245, 166, 35, 0.12); color: #f5a623">📄</div>
+                      <div class="card-name">Comprovante CCMEI</div>
+                      <div class="card-desc">Emita o Certificado da Condição de MEI.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://www8.receita.fazenda.gov.br/SimplesNacional/Servicos/Grupo.aspx?grp=19" target="_blank"
+                    ><div class="card-top" style="background: #f5a623"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(245, 166, 35, 0.12); color: #f5a623">💳</div>
+                      <div class="card-name">Parcelamento</div>
+                      <div class="card-desc">Parcele e emita guias do parcelamento (após dia 10).</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="http://www8.receita.fazenda.gov.br/SimplesNacional/Aplicacoes/ATSPO/dasnsimei.app/Identificacao" target="_blank"
+                    ><div class="card-top" style="background: #f5a623"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(245, 166, 35, 0.12); color: #f5a623">📊</div>
+                      <div class="card-name">Declaração Anual (DASN)</div>
+                      <div class="card-desc">Realize a declaração anual de faturamento (jan–maio).</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://mei.receita.economia.gov.br/baixa/solicitar" target="_blank"
+                    ><div class="card-top" style="background: #f5a623"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(245, 166, 35, 0.12); color: #f5a623">🔒</div>
+                      <div class="card-name">Baixa MEI</div>
+                      <div class="card-desc">Encerre o CNPJ do seu MEI.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://www.regularize.pgfn.gov.br/login" target="_blank"
+                    ><div class="card-top" style="background: #f5a623"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(245, 166, 35, 0.12); color: #f5a623">⚖️</div>
+                      <div class="card-name">Parcelamento Dívida Ativa</div>
+                      <div class="card-desc">Acesse o portal Regularize para parcelar débitos.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
 
-  // Mobile menu
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
-  function closeMobileOnBg(e) {
-    if (e.target === document.getElementById('mobileMenu')) toggleMenu();
-  }
-</script>
+            <!-- CARTILHA DO MEI -->
+            <div class="cat-panel" id="cat-CartilhaDoMEI">
+              <div class="cat-panel-title" style="color: #00b70f">Cartilha do MEI</div>
+              <p class="cat-panel-desc">Guias e tutoriais passo a passo para o MEI.</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="PDFs/Cartilha do MEI/Conceitos e Requisitos.pdf" target="_blank"
+                    ><div class="card-top" style="background: #00b70f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 183, 15, 0.1); color: #00b70f">📘</div>
+                      <div class="card-name">Conceito e Requisitos</div>
+                      <div class="card-desc">O que é MEI, vantagens e obrigações básicas.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="PDFs/Cartilha do MEI/Formalização do MEI.pdf" target="_blank"
+                    ><div class="card-top" style="background: #00b70f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 183, 15, 0.1); color: #00b70f">📗</div>
+                      <div class="card-name">Formalização</div>
+                      <div class="card-desc">Passo a passo para se formalizar corretamente.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="PDFs/Cartilha do MEI/Emissão DAS MEI.pdf" target="_blank"
+                    ><div class="card-top" style="background: #00b70f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 183, 15, 0.1); color: #00b70f">💰</div>
+                      <div class="card-name">Emissão DAS-MEI</div>
+                      <div class="card-desc">Como emitir a guia mensal de pagamento.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="PDFs/Cartilha do MEI/Declaração Anual.pdf" target="_blank"
+                    ><div class="card-top" style="background: #00b70f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 183, 15, 0.1); color: #00b70f">📋</div>
+                      <div class="card-name">Declaração Anual</div>
+                      <div class="card-desc">Como fazer a DASN-MEI pelo SEBRAE-SC.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="PDFs/Cartilha do MEI/Benefícios Previdenciários do MEI.pdf" target="_blank"
+                    ><div class="card-top" style="background: #00b70f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 183, 15, 0.1); color: #00b70f">🛡️</div>
+                      <div class="card-name">Benefícios Previdenciários</div>
+                      <div class="card-desc">Direitos do MEI e como obtê-los.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="PDFs/Cartilha do MEI/MEI Contrata Empregado.pdf" target="_blank"
+                    ><div class="card-top" style="background: #00b70f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 183, 15, 0.1); color: #00b70f">👥</div>
+                      <div class="card-name">Contratação de Empregado</div>
+                      <div class="card-desc">Regras para contratar um funcionário sendo MEI.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="PDFs/Cartilha do MEI/Emissão Nota Fiscal.pdf" target="_blank"
+                    ><div class="card-top" style="background: #00b70f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 183, 15, 0.1); color: #00b70f">🗒️</div>
+                      <div class="card-name">Emissão de Nota Fiscal</div>
+                      <div class="card-desc">Tipos de nota fiscal e como emitir.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="PDFs/Cartilha do MEI/Alteração e Baixa do MEI.pdf" target="_blank"
+                    ><div class="card-top" style="background: #00b70f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 183, 15, 0.1); color: #00b70f">🔄</div>
+                      <div class="card-name">Alteração e Baixa</div>
+                      <div class="card-desc">Como alterar dados cadastrais ou encerrar o MEI.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="PDFs/Cartilha do MEI/Parcelamento MEI.pdf" target="_blank"
+                    ><div class="card-top" style="background: #00b70f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 183, 15, 0.1); color: #00b70f">💳</div>
+                      <div class="card-name">Parcelamento</div>
+                      <div class="card-desc">Como solicitar parcelamento das guias DAS.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="PDFs/Cartilha do MEI/Alteração de Porte.pdf" target="_blank"
+                    ><div class="card-top" style="background: #00b70f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 183, 15, 0.1); color: #00b70f">📈</div>
+                      <div class="card-name">Alteração de Porte</div>
+                      <div class="card-desc">Quando e como mudar a categoria da empresa.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="PDFs/Cartilha do MEI/MEI Caminhoneiro.pdf" target="_blank"
+                    ><div class="card-top" style="background: #00b70f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 183, 15, 0.1); color: #00b70f">🚛</div>
+                      <div class="card-name">MEI Caminhoneiro</div>
+                      <div class="card-desc">Requisitos e benefícios desta categoria.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
 
-</body>
+            <!-- NOTA FISCAL -->
+            <div class="cat-panel" id="cat-NotaFiscal">
+              <div class="cat-panel-title" style="color: #4f8ef7">Nota Fiscal</div>
+              <p class="cat-panel-desc">Emissão e gestão de notas fiscais para diferentes perfis.</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="https://www.nfse.gov.br/EmissorNacional/Login" target="_blank"
+                    ><div class="card-top" style="background: #4f8ef7"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(79, 142, 247, 0.1); color: #4f8ef7">🌐</div>
+                      <div class="card-name">NF-e Serviço (MEI)</div>
+                      <div class="card-desc">Emita Notas Fiscais Eletrônicas de Serviço pelo emissor nacional.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://riodocampo.atende.net/autoatendimento/servicos/acesso-ao-sistema-de-nota-fiscal-de-servico-eletronica/detalhar/1" target="_blank"
+                    ><div class="card-top" style="background: #4f8ef7"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(79, 142, 247, 0.1); color: #4f8ef7">🔑</div>
+                      <div class="card-name">Acesso NF Eletrônica</div>
+                      <div class="card-desc">Solicite acesso para emissão de notas de pessoa jurídica.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://riodocampo.atende.net/autoatendimento/servicos/acesso-ao-sistema-de-nota-fiscal-de-servico-eletronica/detalhar/1" target="_blank"
+                    ><div class="card-top" style="background: #4f8ef7"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(79, 142, 247, 0.1); color: #4f8ef7">📝</div>
+                      <div class="card-name">NF de Serviço</div>
+                      <div class="card-desc">Emita NF de serviços com cadastro municipal.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://riodocampo.atende.net/autoatendimento/servicos/acesso-ao-sistema-de-nota-fiscal-de-servico-eletronica/detalhar/1" target="_blank"
+                    ><div class="card-top" style="background: #4f8ef7"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(79, 142, 247, 0.1); color: #4f8ef7">📃</div>
+                      <div class="card-name">NF Serviço Avulso</div>
+                      <div class="card-desc">Para serviços esporádicos sem cadastro no município.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://riodocampo.atende.net/autoatendimento/servicos/guias-de-servicos-diversos/detalhar/1" target="_blank"
+                    ><div class="card-top" style="background: #4f8ef7"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(79, 142, 247, 0.1); color: #4f8ef7">💸</div>
+                      <div class="card-name">Guia de Pagamento Avulso</div>
+                      <div class="card-desc">Emita a guia de pagamento da nota avulsa.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- AUTÔNOMO -->
+            <div class="cat-panel" id="cat-Autonomo">
+              <div class="cat-panel-title" style="color: #ffd32e">Autônomo</div>
+              <p class="cat-panel-desc">Documentos necessários: RG/CPF, comprovante de endereço e título de conselho de classe.</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="http://regin.jucesc.sc.gov.br/tax.jucesc/ViabilidadeOpcaoV3.aspx" target="_blank"
+                    ><div class="card-top" style="background: #ffd32e"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(255, 211, 46, 0.1); color: #c9a800">📋</div>
+                      <div class="card-name">Formalização / Inscrição</div>
+                      <div class="card-desc">Registre-se como profissional autônomo no município.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://riodocampo.atende.net/autoatendimento/servicos/guias-de-issalvara" target="_blank"
+                    ><div class="card-top" style="background: #ffd32e"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(255, 211, 46, 0.1); color: #c9a800">💳</div>
+                      <div class="card-name">Emissão Guias / Taxas</div>
+                      <div class="card-desc">Gere guias de ISS e Alvará.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://riodocampo.atende.net/autoatendimento/servicos/impressao-do-alvara/detalhar/1" target="_blank"
+                    ><div class="card-top" style="background: #ffd32e"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(255, 211, 46, 0.1); color: #c9a800">🏷️</div>
+                      <div class="card-name">Emissão de Alvará</div>
+                      <div class="card-desc">Emita seu alvará após a solicitação.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="http://regin.jucesc.sc.gov.br/tax.jucesc/ViabilidadeOpcaoV3.aspx" target="_blank"
+                    ><div class="card-top" style="background: #ffd32e"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(255, 211, 46, 0.1); color: #c9a800">🔒</div>
+                      <div class="card-name">Baixa</div>
+                      <div class="card-desc">Encerre seu registro de autônomo.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="http://regin.jucesc.sc.gov.br/tax.jucesc/ViabilidadeOpcaoV3.aspx" target="_blank"
+                    ><div class="card-top" style="background: #ffd32e"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(255, 211, 46, 0.1); color: #c9a800">✏️</div>
+                      <div class="card-name">Atualização Cadastral</div>
+                      <div class="card-desc">Mantenha seus dados sempre atualizados.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- CONTABILIDADE -->
+            <div class="cat-panel" id="cat-Contabilidade">
+              <div class="cat-panel-title" style="color: #bdcf00">Contabilidade</div>
+              <p class="cat-panel-desc">Serviços contábeis e fiscais para empresas de Rio do Campo.</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="https://api.whatsapp.com/send?phone=554735648119" target="_blank"
+                    ><div class="card-top" style="background: #bdcf00"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(189, 207, 0, 0.1); color: #8fa000">📜</div>
+                      <div class="card-name">Certidão de Baixa</div>
+                      <div class="card-desc">Solicite via WhatsApp.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://api.whatsapp.com/send?phone=554735648119" target="_blank"
+                    ><div class="card-top" style="background: #bdcf00"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(189, 207, 0, 0.1); color: #8fa000">📊</div>
+                      <div class="card-name">Extrato de Débito</div>
+                      <div class="card-desc">Emita para PF ou PJ via WhatsApp.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://riodocampo.atende.net/autoatendimento/servicos/guias-de-issalvara" target="_blank"
+                    ><div class="card-top" style="background: #bdcf00"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(189, 207, 0, 0.1); color: #8fa000">💸</div>
+                      <div class="card-name">Guias ISS / Alvará</div>
+                      <div class="card-desc">Retire suas taxas de forma rápida.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://api.whatsapp.com/send?phone=554735648119" target="_blank"
+                    ><div class="card-top" style="background: #bdcf00"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(189, 207, 0, 0.1); color: #8fa000">🏷️</div>
+                      <div class="card-name">Emissão de Alvará</div>
+                      <div class="card-desc">Alvará municipal de Rio do Campo.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="http://regin.jucesc.sc.gov.br/tax.jucesc/ViabilidadeOpcaoV3.aspx" target="_blank"
+                    ><div class="card-top" style="background: #bdcf00"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(189, 207, 0, 0.1); color: #8fa000">✏️</div>
+                      <div class="card-name">Atualização de Empresas</div>
+                      <div class="card-desc">Mantenha os dados do seu CNPJ atualizados.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="http://regin.jucesc.sc.gov.br/tax.jucesc/ViabilidadeOpcaoV3.aspx" target="_blank"
+                    ><div class="card-top" style="background: #bdcf00"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(189, 207, 0, 0.1); color: #8fa000">🏢</div>
+                      <div class="card-name">Abertura de Empresa</div>
+                      <div class="card-desc">Consulte viabilidade e abra seu negócio.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- CERTIDÕES -->
+            <div class="cat-panel" id="cat-Certidoes">
+              <div class="cat-panel-title" style="color: #00bbbb">Certidões Negativas</div>
+              <p class="cat-panel-desc">Emita certidões nos âmbitos municipal, estadual e federal.</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="https://sat.sef.sc.gov.br/tax.NET/Sat.CtaCte.Web/SolicitacaoCnd.aspx" target="_blank"
+                    ><div class="card-top" style="background: #00bbbb"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 187, 187, 0.1); color: #00bbbb">🏛️</div>
+                      <div class="card-name">Certidão Estadual</div>
+                      <div class="card-desc">Emita certidão negativa estadual de SC.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://servicos.receitafederal.gov.br/servico/certidoes/#/home" target="_blank"
+                    ><div class="card-top" style="background: #00bbbb"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 187, 187, 0.1); color: #00bbbb">🇧🇷</div>
+                      <div class="card-name">Certidão Federal</div>
+                      <div class="card-desc">Emita certidão negativa da Receita Federal.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://riodocampo.atende.net/autoatendimento/servicos/certidao-negativa-de-debitos" target="_blank"
+                    ><div class="card-top" style="background: #00bbbb"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 187, 187, 0.1); color: #00bbbb">🏘️</div>
+                      <div class="card-name">Certidão Municipal</div>
+                      <div class="card-desc">Emita certidão negativa do município de Rio do Campo.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://www.tjsc.jus.br/web/judicial/certidoes" target="_blank"
+                    ><div class="card-top" style="background: #00bbbb"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 187, 187, 0.1); color: #00bbbb">⚖️</div>
+                      <div class="card-name">Recuperação / Falência</div>
+                      <div class="card-desc">Certidão de Recuperação Judicial e Falência (TJSC).</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://cndt-certidao.tst.jus.br/inicio.faces" target="_blank"
+                    ><div class="card-top" style="background: #00bbbb"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 187, 187, 0.1); color: #00bbbb">👷</div>
+                      <div class="card-name">CNDT Trabalhista</div>
+                      <div class="card-desc">Certidão Negativa de Débitos Trabalhistas (TST).</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp" target="_blank"
+                    ><div class="card-top" style="background: #00bbbb"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 187, 187, 0.1); color: #00bbbb">🔢</div>
+                      <div class="card-name">Emissão CNPJ</div>
+                      <div class="card-desc">Comprovante de Inscrição e Situação Cadastral.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- SECRETARIA -->
+            <div class="cat-panel" id="cat-Secretaria">
+              <div class="cat-panel-title" style="color: #ff4f4f">Secretaria do Estado</div>
+              <p class="cat-panel-desc">⚠️ Ao solicitar inscrição estadual, guarde o protocolo!</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="https://redesimservicos.rfb.gov.br/coletor-evt-especiais/coletor-evt-especiais" target="_blank"
+                    ><div class="card-top" style="background: #ff4f4f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(255, 79, 79, 0.1); color: #ff4f4f">📝</div>
+                      <div class="card-name">Solicitar Inscrição Estadual</div>
+                      <div class="card-desc">Para empresas do SIMEI. Gerada em até 1 hora.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="http://servicos.receita.fazenda.gov.br/Servicos/fcpj/consulta.asp" target="_blank"
+                    ><div class="card-top" style="background: #ff4f4f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(255, 79, 79, 0.1); color: #ff4f4f">🔍</div>
+                      <div class="card-name">Acompanhar Protocolo</div>
+                      <div class="card-desc">Acompanhe seu protocolo de inscrição estadual.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://sat.sef.sc.gov.br/tax.NET/tax.net.cadastro/conssc_sitcad.aspx" target="_blank"
+                    ><div class="card-top" style="background: #ff4f4f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(255, 79, 79, 0.1); color: #ff4f4f">📜</div>
+                      <div class="card-name">Comprovante Inscrição Estadual</div>
+                      <div class="card-desc">Obrigatório para comércio e transporte interestadual.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://sat.sef.sc.gov.br/tax.NET/Sat.ControleAcesso.Web/CredenciamentoEletronicoParaMEI.aspx" target="_blank"
+                    ><div class="card-top" style="background: #ff4f4f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(255, 79, 79, 0.1); color: #ff4f4f">🔑</div>
+                      <div class="card-name">Acesso Nota Estadual</div>
+                      <div class="card-desc">Solicite acesso ao S@T da Receita Estadual.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://sat.sef.sc.gov.br/tax.NET/Login.aspx" target="_blank"
+                    ><div class="card-top" style="background: #ff4f4f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(255, 79, 79, 0.1); color: #ff4f4f">🗒️</div>
+                      <div class="card-name">Nota Fiscal Estadual</div>
+                      <div class="card-desc">Emita NF de venda, fabricação ou transporte pelo S@T.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- VIGILÂNCIA -->
+            <div class="cat-panel" id="cat-Vigilancia">
+              <div class="cat-panel-title" style="color: #5b9bd5">Vigilância Sanitária</div>
+              <p class="cat-panel-desc">Contato: <a href="https://api.whatsapp.com/send?phone=5547996230119" style="color: #5b9bd5">(47) 3564-8122</a></p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="https://drive.google.com/file/d/1qBG9GCcQjTSUjKokaTfwsvVewsbfEg6W/view" target="_blank"
+                    ><div class="card-top" style="background: #5b9bd5"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(91, 155, 213, 0.1); color: #5b9bd5">📋</div>
+                      <div class="card-name">Anexo V – Médio Risco</div>
+                      <div class="card-desc">Formulário para atividades de médio risco.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://drive.google.com/file/d/1-0NP2c0QUT5IOVSvh0jNKfaW5-IOnFyZ/view" target="_blank"
+                    ><div class="card-top" style="background: #5b9bd5"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(91, 155, 213, 0.1); color: #5b9bd5">🟢</div>
+                      <div class="card-name">Atividades de Baixo Risco</div>
+                      <div class="card-desc">Dispensadas de alvará da vigilância sanitária.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://drive.google.com/file/d/1ngO-ce8ltZclL8NhZzcV3t4QPvmLXsFC/view" target="_blank"
+                    ><div class="card-top" style="background: #5b9bd5"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(91, 155, 213, 0.1); color: #5b9bd5">🟡</div>
+                      <div class="card-name">Atividades de Médio Risco</div>
+                      <div class="card-desc">Inspeção posterior à abertura.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://drive.google.com/file/d/1BcE7xq6HL6-Vn9Qwi9xzpo0Dnx_nmW3D/view" target="_blank"
+                    ><div class="card-top" style="background: #5b9bd5"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(91, 155, 213, 0.1); color: #5b9bd5">🔴</div>
+                      <div class="card-name">Atividades de Alto Risco</div>
+                      <div class="card-desc">Com inspeção prévia obrigatória.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://www.vigilanciasanitaria.sc.gov.br/" target="_blank"
+                    ><div class="card-top" style="background: #5b9bd5"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(91, 155, 213, 0.1); color: #5b9bd5">🌐</div>
+                      <div class="card-name">Site da Vigilância</div>
+                      <div class="card-desc">Portal oficial da VISA Santa Catarina.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- BOMBEIROS -->
+            <div class="cat-panel" id="cat-Bombeiros">
+              <div class="cat-panel-title" style="color: #e84040">Bombeiros</div>
+              <p class="cat-panel-desc">Instruções normativas e orientações do Corpo de Bombeiros de SC.</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="https://www.cbm.sc.gov.br/index.php/sci/instrucoes-normativas" target="_blank"
+                    ><div class="card-top" style="background: #e84040"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(232, 64, 64, 0.1); color: #e84040">🚒</div>
+                      <div class="card-name">Site dos Bombeiros</div>
+                      <div class="card-desc">Instruções normativas do CBM-SC.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- MEIO AMBIENTE -->
+            <div class="cat-panel" id="cat-MeioAmbiente">
+              <div class="cat-panel-title" style="color: #3dd6a3">Meio Ambiente</div>
+              <p class="cat-panel-desc">Licenciamento ambiental e orientações do IMA-SC.</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="https://in.ima.sc.gov.br/" target="_blank"
+                    ><div class="card-top" style="background: #3dd6a3"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(61, 214, 163, 0.1); color: #3dd6a3">🌿</div>
+                      <div class="card-name">Meio Ambiente</div>
+                      <div class="card-desc">Cartilha orientativa e serviços do IMA-SC.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- PLANO DIRETOR -->
+            <div class="cat-panel" id="cat-PlanoDiretor">
+              <div class="cat-panel-title" style="color: #ff9000">Plano Diretor</div>
+              <p class="cat-panel-desc">Legislação municipal de zoneamento e uso do solo.</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="https://leismunicipais.com.br/plano-diretor-rio-do-campo-sc" target="_blank"
+                    ><div class="card-top" style="background: #ff9000"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(255, 144, 0, 0.1); color: #ff9000">🗺️</div>
+                      <div class="card-name">Plano Diretor</div>
+                      <div class="card-desc">Consulte o Plano Diretor de Rio do Campo.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- FLUXOGRAMA -->
+            <div class="cat-panel" id="cat-Fluxograma">
+              <div class="cat-panel-title" style="color: #3cc1c1">Fluxograma</div>
+              <p class="cat-panel-desc">Abrir empresa em Rio do Campo é rápido e fácil — sem taxas a partir de 2023!</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="/assets/flowcharts/fluxo-abertura-de-empresas.pdf" target="_blank"
+                    ><div class="card-top" style="background: #3cc1c1"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(60, 193, 193, 0.1); color: #3cc1c1">📊</div>
+                      <div class="card-name">Fluxograma de Abertura</div>
+                      <div class="card-desc">Veja o passo a passo visual para abrir sua empresa.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- MATERIAIS GRATUITOS -->
+            <div class="cat-panel" id="cat-MateriaisGratis">
+              <div class="cat-panel-title" style="color: #a3dd73">Materiais Gratuitos</div>
+              <p class="cat-panel-desc">Cursos e ferramentas gratuitas em parceria com o SEBRAE.</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="https://www.sebrae-sc.com.br/ebook/relatorio-anual-de-faturamento-do-mei-planner-2" target="_blank"
+                    ><div class="card-top" style="background: #a3dd73"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(163, 221, 115, 0.1); color: #7ab040">📊</div>
+                      <div class="card-name">Tabela Controle Financeiro</div>
+                      <div class="card-desc">Planilha com cálculo automático mensal para o relatório anual.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- COMPRAS PÚBLICAS -->
+            <div class="cat-panel" id="cat-ComprasPublicas">
+              <div class="cat-panel-title" style="color: #4f6fb7">Compras Públicas</div>
+              <p class="cat-panel-desc">Licitações, editais e guias para fornecedores do município.</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="/PDFs/Plano de Compras.pdf" target="_blank"
+                    ><div class="card-top" style="background: #4f6fb7"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(79, 111, 183, 0.1); color: #4f6fb7">📋</div>
+                      <div class="card-name">Plano Anual de Compras</div>
+                      <div class="card-desc">Veja o PAC de Rio do Campo.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://docs.google.com/forms/d/1oBTpsJWgit27O4lUz8MHDBdR062XilgbqW-avOo4mSQ/" target="_blank"
+                    ><div class="card-top" style="background: #4f6fb7"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(79, 111, 183, 0.1); color: #4f6fb7">📝</div>
+                      <div class="card-name">Cadastro de Fornecedores</div>
+                      <div class="card-desc">Cadastre-se para ser contatado em editais.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+                <div class="card">
+                  <a href="https://riodocampo.atende.net/autoatendimento/servicos/consulta-de-licitacoes" target="_blank"
+                    ><div class="card-top" style="background: #4f6fb7"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(79, 111, 183, 0.1); color: #4f6fb7">📢</div>
+                      <div class="card-name">Licitações Abertas</div>
+                      <div class="card-desc">Confira os editais abertos do município.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- MAPA DE EMPRESAS -->
+            <div class="cat-panel" id="cat-MapaEmpresas">
+              <div class="cat-panel-title" style="color: #00b70f">Mapa de Empresas</div>
+              <p class="cat-panel-desc">Acompanhe o número de empresas no Brasil, em SC e em Rio do Campo.</p>
+              <div class="cards-grid">
+                <div class="card">
+                  <a href="https://www.gov.br/empresas-e-negocios/pt-br/mapa-de-empresas/painel-mapa-de-empresas" target="_blank"
+                    ><div class="card-top" style="background: #00b70f"></div>
+                    <div class="card-body">
+                      <div class="card-icon" style="background: rgba(0, 183, 15, 0.1); color: #00b70f">🗺️</div>
+                      <div class="card-name">Mapa de Empresas</div>
+                      <div class="card-desc">Painel nacional, estadual e municipal de empresas.</div>
+                      <span class="card-arrow">↗</span>
+                    </div></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /cards-area -->
+        </div>
+        <!-- /materiais-layout -->
+      </div>
+    </section>
+
+    <!-- CAPACITAÇÕES -->
+    <section class="content-section" id="capacitacoes">
+      <div class="section-inner">
+        <div class="section-label">Capacitações</div>
+        <h2 class="section-title">Aprenda com as melhores <br />plataformas do mundo</h2>
+        <p class="section-sub">Cursos online gratuitos e pagos para impulsionar seu negócio.</p>
+
+        <div class="cursos-grid">
+          <div class="curso-card">
+            <a href="https://riodocampomaisempregos.santacatarinapelaeducacao.com.br/" target="_blank"
+              ><div class="curso-logo" style="background: #1a1a2e">
+                <img
+                  src="assets/emprega já.png"
+                  alt="Emprega Já"
+                  onerror="
+                    this.style.display = 'none';
+                    this.parentNode.innerHTML = '<span style=\'color:#4f8ef7;font-family:Syne,sans-serif;font-weight:700;font-size:18px\'>Emprega Já</span>';
+                  "
+                />
+              </div>
+              <div class="curso-body">
+                <h3>Emprega Já Rio do Campo</h3>
+                <p>Plataforma de busca de empregos local.</p>
+                <span class="curso-tag">Local</span>
+              </div></a
+            >
+          </div>
+          <div class="curso-card">
+            <a href="https://sebrae.com.br/sites/PortalSebrae/" target="_blank"
+              ><div class="curso-logo">
+                <img
+                  src="assets/capacitacoes/sebrae.jpeg"
+                  alt="SEBRAE"
+                  onerror="
+                    this.style.display = 'none';
+                    this.parentNode.innerHTML = '<span style=\'color:#00a651;font-family:Syne,sans-serif;font-weight:700;font-size:24px\'>SEBRAE</span>';
+                  "
+                />
+              </div>
+              <div class="curso-body">
+                <h3>SEBRAE</h3>
+                <p>Cursos gratuitos, consultoria e conteúdos para empreendedores.</p>
+                <span class="curso-tag">Gratuito</span>
+              </div></a
+            >
+          </div>
+          <div class="curso-card">
+            <a href="https://cursos.sandbox.ee/todos-cursos" target="_blank"
+              ><div class="curso-logo">
+                <img
+                  src="assets/capacitacoes/sandbox.png"
+                  alt="Sandbox"
+                  onerror="
+                    this.style.display = 'none';
+                    this.parentNode.innerHTML = '<span style=\'color:#333;font-family:Syne,sans-serif;font-weight:700;font-size:22px\'>Sandbox</span>';
+                  "
+                />
+              </div>
+              <div class="curso-body">
+                <h3>Sandbox</h3>
+                <p>Estratégia ágil, marketing digital e pensamento estratégico.</p>
+                <span class="curso-tag">Online</span>
+              </div></a
+            >
+          </div>
+          <div class="curso-card">
+            <a href="https://veduca.org/courses/" target="_blank"
+              ><div class="curso-logo">
+                <img
+                  src="assets/capacitacoes/veduca.png"
+                  alt="Veduca"
+                  onerror="
+                    this.style.display = 'none';
+                    this.parentNode.innerHTML = '<span style=\'color:#e84040;font-family:Syne,sans-serif;font-weight:700;font-size:22px\'>Veduca</span>';
+                  "
+                />
+              </div>
+              <div class="curso-body">
+                <h3>Veduca</h3>
+                <p>Plataforma EAD com cursos gratuitos e certificados.</p>
+                <span class="curso-tag">Gratuito</span>
+              </div></a
+            >
+          </div>
+          <div class="curso-card">
+            <a href="https://educacao-executiva.fgv.br/cursos/online" target="_blank"
+              ><div class="curso-logo">
+                <img
+                  src="assets/capacitacoes/FGV.png"
+                  alt="FGV"
+                  onerror="
+                    this.style.display = 'none';
+                    this.parentNode.innerHTML = '<span style=\'color:#003087;font-family:Syne,sans-serif;font-weight:800;font-size:24px\'>FGV</span>';
+                  "
+                />
+              </div>
+              <div class="curso-body">
+                <h3>FGV Online</h3>
+                <p>Cursos de alta qualidade com formação profissional reconhecida.</p>
+                <span class="curso-tag">Certificado</span>
+              </div></a
+            >
+          </div>
+          <div class="curso-card">
+            <a href="https://www.edx.org/" target="_blank"
+              ><div class="curso-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 0 553 311">
+                  <polygon fill="#02262b" points="353,51 364,0 51,0 0,245 262,245 247,311 498,311 553,51" />
+                  <path
+                    fill="#fff"
+                    d="M107,214c-7,0-14-1-20-3-6-2-12-6-16-10-5-5-8-10-11-17-3-7-4-14-4-23 0-12 2-22 5-32 3-10 8-18 14-25 6-7 13-12 21-16 8-4 17-6 27-6 7,0 13,1 19,3 6,2 11,6 15,10 4,4 8,10 11,16 3,6 4,14 4,22 0,1 0,3 0,4 0,2 0,3 0,5 0,2 0,4 0,5 0,2 0,3-1,4H76c0,1 0,2 0,3 0,1 0,2 0,3 0,7 1,12 3,17 2,5 4,8 7,11 3,3 6,5 10,6 4,1 8,2 11,2 8,0 15-1 20-4 5-3 9-7 12-12h22c-1,5-4,9-7,14-3,4-7,8-12,11-5,3-10,6-16,7C121,213 114,214 107,214zM148,136c0,0 0-1 0-2 0-1 0-2 0-3 0-4-1-8-2-12-1-4-3-7-6-10-2-3-5-5-9-7-4-2-8-2-13-2-5,0-9,1-14,3-4,2-8,4-12,7-3,3-6,7-9,11-3,4-5,9-6,15H148z"
+                  />
+                  <path
+                    fill="#fff"
+                    d="M228,214c-6,0-12-1-18-4-6-2-11-6-15-10-4-4-8-10-10-16-2-6-4-14-4-21 0-8 1-15 2-22 2-7 4-13 7-19 3-6 6-11 10-16 4-5 8-9 13-12 5-3 10-6 16-8 6-2 12-3 18-3 5,0 9,1 13,2 4,1 8,3 11,5 3,2 6,5 9,8 2,3 4,7 5,10h2l16-74h21l-38,178h-20l4-17h-2c-5,6-10,11-17,14C244,212 236,214 228,214zM234,195c7,0 13-2 18-5 6-3 11-7 15-13 4-5 7-12 10-19 2-7 4-15 4-24 0-5-1-10-2-15-2-4-4-8-6-11-3-3-6-5-10-7-4-2-8-2-13-2-7,0-13,1-18,4-6,3-10,7-15,12-4,5-7,11-10,19-2,7-4,15-4,24 0,5 1,10 2,15 2,4 4,8 6,12 3,3 6,6 10,7C225,195 229,195 234,195z"
+                  />
+                  <polygon fill="#fff" points="509,84 463,84 412,147 410,147 383,84 337,84 377,175 290,277 336,277 391,212 395,212 425,277 471,277 427,179" />
+                </svg>
+              </div>
+              <div class="curso-body">
+                <h3>EdX</h3>
+                <p>Cursos de Harvard, MIT e universidades renomadas do mundo.</p>
+                <span class="curso-tag">Gratuito</span>
+              </div></a
+            >
+          </div>
+          <div class="curso-card">
+            <a href="https://www.coursera.org/" target="_blank"
+              ><div class="curso-logo">
+                <img
+                  src="assets/capacitacoes/coursera.png"
+                  alt="Coursera"
+                  onerror="
+                    this.style.display = 'none';
+                    this.parentNode.innerHTML = '<span style=\'color:#0056D2;font-family:Syne,sans-serif;font-weight:800;font-size:20px\'>Coursera</span>';
+                  "
+                />
+              </div>
+              <div class="curso-body">
+                <h3>Coursera</h3>
+                <p>Certificações de Google, IBM e universidades globais.</p>
+                <span class="curso-tag">Certificado</span>
+              </div></a
+            >
+          </div>
+          <div class="curso-card">
+            <a href="https://www.linkedin.com/learning/" target="_blank"
+              ><div class="curso-logo">
+                <img
+                  src="assets/capacitacoes/linkedinlearning.jpeg"
+                  alt="LinkedIn Learning"
+                  onerror="
+                    this.style.display = 'none';
+                    this.parentNode.innerHTML = '<span style=\'color:#0077B5;font-family:Syne,sans-serif;font-weight:700;font-size:17px\'>LinkedIn Learning</span>';
+                  "
+                />
+              </div>
+              <div class="curso-body">
+                <h3>LinkedIn Learning</h3>
+                <p>Milhares de cursos em 25 idiomas para profissionais.</p>
+                <span class="curso-tag">Profissional</span>
+              </div></a
+            >
+          </div>
+          <div class="curso-card">
+            <a href="https://online.stanford.edu/explore" target="_blank"
+              ><div class="curso-logo">
+                <img
+                  src="assets/capacitacoes/stanfordonline.jpeg"
+                  alt="Stanford Online"
+                  onerror="
+                    this.style.display = 'none';
+                    this.parentNode.innerHTML = '<span style=\'color:#8C1515;font-family:Syne,sans-serif;font-weight:700;font-size:17px\'>Stanford Online</span>';
+                  "
+                />
+              </div>
+              <div class="curso-body">
+                <h3>Stanford Online</h3>
+                <p>Oportunidades educacionais de nível mundial.</p>
+                <span class="curso-tag">Premium</span>
+              </div></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="content-section" id="contato">
+      <div class="section-inner">
+        <div class="section-label">Contato</div>
+        <h2 class="section-title">Estamos aqui para <br />te atender</h2>
+        <p class="section-sub">Atendimento presencial, por WhatsApp ou e-mail.</p>
+
+        <div class="contato-grid">
+          <div class="contato-info">
+            <div class="contato-item">
+              <div class="contato-icon">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M13.6 2.33A7.85 7.85 0 0 0 8 0C3.6 0 .07 3.56.06 7.93c0 1.4.37 2.76 1.06 3.96L0 16l4.2-1.1a7.9 7.9 0 0 0 3.79.96h.004c4.37 0 7.93-3.56 7.93-7.93a7.9 7.9 0 0 0-2.33-5.59z" />
+                </svg>
+              </div>
+              <div class="contato-detail">
+                <div class="label">WhatsApp</div>
+                <a href="https://api.whatsapp.com/send?phone=554735648122" target="_blank">(47) 3564-8122</a>
+              </div>
+            </div>
+            <div class="contato-item">
+              <div class="contato-icon">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M13.6 2.33A7.85 7.85 0 0 0 8 0C3.6 0 .07 3.56.06 7.93c0 1.4.37 2.76 1.06 3.96L0 16l4.2-1.1a7.9 7.9 0 0 0 3.79.96h.004c4.37 0 7.93-3.56 7.93-7.93a7.9 7.9 0 0 0-2.33-5.59z" />
+                </svg>
+              </div>
+              <div class="contato-detail">
+                <div class="label">Telefone</div>
+                <a href="tel:554735648122">(47) 3564-8122</a>
+              </div>
+            </div>
+            <div class="contato-item">
+              <div class="contato-icon">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                  <path
+                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.71 2.825L15 11.1V5.383zm-.03 6.876-5.64-3.47L8 9.58l-1.33-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .97-.741zM1 11.1l4.71-2.897L1 5.383V11.1z"
+                  />
+                </svg>
+              </div>
+              <div class="contato-detail">
+                <div class="label">E-mail</div>
+                <a href="mailto:rdc.empreendedor@gmail.com">rdc.empreendedor@gmail.com</a>
+              </div>
+            </div>
+            <div class="contato-item">
+              <div class="contato-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <div class="contato-detail">
+                <div class="label">Horário de atendimento</div>
+                <span>Seg. a Sex. — 7h30 às 11h30 e 13h às 17h</span>
+              </div>
+            </div>
+            <div class="contato-item">
+              <div class="contato-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div class="contato-detail">
+                <div class="label">Endereço</div>
+                <a href="https://www.google.com.br/maps/place/Sala+do+Empreendedor+Rio+do+Campo-SC" target="_blank"> Rua 29 de Dezembro, Nº 70 — Floresta<br />Rio do Campo — SC, 89198-000 </a>
+              </div>
+            </div>
+            <a href="https://www.instagram.com/saladoempreendedorrdc/" target="_blank" class="contato-item" style="cursor: pointer">
+              <div class="contato-icon" style="color: #e1306c">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-instagram-icon lucide-instagram"
+                >
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+              </div>
+              <div class="contato-detail">
+                <div class="label">Instagram</div>
+                <span>@saladoempreendedorrdc</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.8!2d-50.1455959!3d-26.949208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e09979c937911f%3A0xa03d3be9304c3c0a!2sSala%20do%20Empreendedor%20Rio%20do%20Campo-SC!5e0!3m2!1spt-BR!2sbr!4v1"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa Sala do Empreendedor"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <div class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+              <line x1="7" y1="7" x2="7.01" y2="7" />
+            </svg>
+          </div>
+          Sala do Empreendedor
+        </div>
+
+        <div class="footer-links">
+          <a href="#aprendizado">Materiais</a>
+          <a href="#capacitacoes">Capacitações</a>
+          <a href="#contato">Contato</a>
+          <a href="https://riodocampo.atende.net" target="_blank">Prefeitura</a>
+        </div>
+
+        <div class="footer-meta">
+          Rio do Campo — SC<br />
+          Em parceria com o SEBRAE
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Categoria switcher
+      function switchCat(el) {
+        document.querySelectorAll("#catList li").forEach((li) => li.classList.remove("active"));
+        el.classList.add("active");
+
+        const cat = el.dataset.cat;
+        document.querySelectorAll(".cat-panel").forEach((p) => p.classList.remove("active"));
+        const panel = document.getElementById("cat-" + cat);
+        if (panel) panel.classList.add("active");
+      }
+
+      // Mobile menu
+      function toggleMenu() {
+        document.getElementById("mobileMenu").classList.toggle("open");
+      }
+      function closeMobileOnBg(e) {
+        if (e.target === document.getElementById("mobileMenu")) toggleMenu();
+      }
+    </script>
+  </body>
 </html>
